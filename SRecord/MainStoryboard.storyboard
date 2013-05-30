@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="XzC-zp-26W">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Sentences View Controller - Sentences-->
+        <scene sceneID="lWS-Zy-0so">
+            <objects>
+                <tableViewController id="I0U-1C-MBL" customClass="EditSentencesViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z8T-tt-v62">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DefaultSentenceCell" id="FIi-w1-MuQ" customClass="SentenceCell">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Sentence" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-o2-tYO">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Np1-vK-ofe"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="FIi-w1-MuQ" id="gOV-z4-kFe"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="c0h-o2-tYO" secondAttribute="trailing" constant="20" type="default" id="c2x-nE-0vQ"/>
+                                    <constraint firstItem="c0h-o2-tYO" firstAttribute="leading" secondItem="FIi-w1-MuQ" secondAttribute="leading" constant="20" type="default" id="uoM-Qg-Sok"/>
+                                    <constraint firstItem="c0h-o2-tYO" firstAttribute="top" secondItem="FIi-w1-MuQ" secondAttribute="top" constant="6" id="zDL-c5-oq4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="sentenceInput" destination="c0h-o2-tYO" id="2eT-aL-u7m"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InsertionCell" id="AdP-Vn-v9w" customClass="SentenceCell">
+                                <rect key="frame" x="0.0" y="66" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I0U-1C-MBL" id="U3t-gc-fum"/>
+                            <outlet property="delegate" destination="I0U-1C-MBL" id="V9t-SD-Md1"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ybL-2k-bJd"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Sentences" id="asH-8A-8xZ">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="6jQ-Lo-57p">
+                            <connections>
+                                <action selector="switchEditMode:" destination="I0U-1C-MBL" id="bRQ-Fa-fsq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ga8-Mh-5Sv">
+                            <connections>
+                                <segue destination="uBr-Lr-EYI" kind="unwind" identifier="DoneEdit" unwindAction="done:" id="Zq9-A9-mDa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKK-mG-0eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uBr-Lr-EYI" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-850" y="-1065"/>
+        </scene>
+        <!--Record Menu View Controller - SRecord-->
+        <scene sceneID="fNW-DO-hp9">
+            <objects>
+                <viewController id="1Oc-yc-f2Y" customClass="SRecordMenuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wSd-Gh-g2n">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPI-7G-NMN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="Gba-Bs-JEW"/>
+                                    <constraint firstAttribute="width" constant="137" id="IW0-MS-ds8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="48"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zbw-gB-rq4" kind="modal" identifier="StartSession" id="xaf-AM-lNW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YPI-7G-NMN" firstAttribute="centerY" secondItem="wSd-Gh-g2n" secondAttribute="centerY" type="default" id="TVE-0G-gOH"/>
+                            <constraint firstItem="YPI-7G-NMN" firstAttribute="centerX" secondItem="wSd-Gh-g2n" secondAttribute="centerX" type="default" id="qNI-i5-rOt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="SRecord" id="77R-X8-QfS">
+                        <barButtonItem key="leftBarButtonItem" title="Edit Sentences" id="Rvc-2q-udG">
+                            <connections>
+                                <segue destination="oyT-ge-V6M" kind="modal" identifier="EditSentences" id="oNH-H4-xyS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nM0-QK-146" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="107"/>
+        </scene>
+        <!--Session View Controller-->
+        <scene sceneID="cBb-pz-BWN">
+            <objects>
+                <viewController id="zbw-gB-rq4" customClass="SessionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JrO-8L-yA8">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sample sentence to be spoken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIE-c9-L5X">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="TBi-Kr-faB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQY-St-ora">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="SMB-C8-CdI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <state key="normal" title="Record">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="record:" destination="zbw-gB-rq4" eventType="touchUpInside" id="3xb-I7-N6X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vQY-St-ora" firstAttribute="centerX" secondItem="ZIE-c9-L5X" secondAttribute="centerX" type="default" id="I8t-IF-EfC"/>
+                            <constraint firstItem="ZIE-c9-L5X" firstAttribute="top" secondItem="JrO-8L-yA8" secondAttribute="top" constant="476" id="eok-ZF-Y8u"/>
+                            <constraint firstAttribute="bottom" secondItem="vQY-St-ora" secondAttribute="bottom" constant="226" id="iUv-lI-nDt"/>
+                            <constraint firstAttribute="trailing" secondItem="ZIE-c9-L5X" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pxz-M4-5Wf"/>
+                            <constraint firstItem="ZIE-c9-L5X" firstAttribute="leading" secondItem="JrO-8L-yA8" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uPH-MC-Ooz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sentenceLabel" destination="ZIE-c9-L5X" id="ag5-Uk-5bA"/>
+                        <segue destination="f1r-ne-LIc" kind="modal" identifier="ShowSessionEnd" id="c5L-8v-hBh"/>
+                        <segue destination="1Oc-yc-f2Y" kind="modal" identifier="CancelSession" id="XEC-cR-88f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5m-3n-FTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="146" y="114"/>
+        </scene>
+        <!--Session End View Controller-->
+        <scene sceneID="tQj-48-GLc">
+            <objects>
+                <viewController id="f1r-ne-LIc" customClass="SessionEndViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MLe-WO-rIV">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V5T-5W-FXC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nFP-gc-Hfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027" y="120"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gcp-Ys-WIb">
+            <objects>
+                <navigationController id="XzC-zp-26W" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gjM-EM-Rdf">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Oc-yc-f2Y" kind="relationship" relationship="rootViewController" id="Cdc-sk-8Qk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vf-eZ-IN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1800" y="107"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Opl-lW-S1K">
+            <objects>
+                <navigationController id="oyT-ge-V6M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IOh-8B-5eL">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="EU7-D2-Ljs">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="I0U-1C-MBL" kind="relationship" relationship="rootViewController" id="HhG-UK-QvT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZZ-9n-7Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1800" y="-1065"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="EditSentencesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditSentencesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="switchEditMode:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SRecordMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SRecordMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="SentenceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SentenceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="sentenceInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SessionEndViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SessionEndViewController.h"/>
+        </class>
+        <class className="SessionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SessionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="record:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sentenceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="XEC-cR-88f"/>
+    </inferredMetricsTieBreakers>
+</document>
