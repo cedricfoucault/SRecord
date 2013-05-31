@@ -22,4 +22,10 @@
     return self;
 }
 
+- (id)initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript sessionNo:(NSInteger)sessionNo {
+    self = [self initWithFileURL:URL transcript:transcript];
+    self.sessionNo = sessionNo;
+    return self;
+}
+
 @end

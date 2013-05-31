@@ -39,6 +39,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.recordingsDone = [[NSMutableArray alloc] init];
     [self nextState];
 }
 
@@ -120,7 +121,7 @@
     // init new recording handler
     NSURL *soundFileURL = [self newFileURL];
     NSString *sentence = [self popSentence];
-    RecordingHandler *recordingHandler = [[RecordingHandler alloc] initWithFileURL:soundFileURL transcript:sentence];
+    RecordingHandler *recordingHandler = [[RecordingHandler alloc] initWithFileURL:soundFileURL transcript:sentence sessionNo:self.sessionNo];
     // init audio session active
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:YES error:nil];

@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
+		82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */; };
+		82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C9175817560067FD43 /* libJSONKit.a */; };
+		82AA17CD175817560067FD43 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17CA175817560067FD43 /* libOAuth2Client.a */; };
+		82AA17CE175817560067FD43 /* libOHAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17CB175817560067FD43 /* libOHAttributedLabel.a */; };
+		82AA17D01758175B0067FD43 /* libSoundCloudUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17CF1758175B0067FD43 /* libSoundCloudUI.a */; };
+		82AA17D2175818C80067FD43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D1175818C80067FD43 /* QuartzCore.framework */; };
+		82AA17D5175818D20067FD43 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D3175818D20067FD43 /* AddressBook.framework */; };
+		82AA17D6175818D20067FD43 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D4175818D20067FD43 /* AddressBookUI.framework */; };
+		82AA17D8175818DA0067FD43 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D7175818DA0067FD43 /* CoreLocation.framework */; };
+		82AA17DA175818E00067FD43 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D9175818E00067FD43 /* Security.framework */; };
+		82AA17DC175818E90067FD43 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17DB175818E90067FD43 /* CoreText.framework */; };
+		82AA17E0175821BB0067FD43 /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA17DF175821BB0067FD43 /* SRConstants.m */; };
+		82AA17E217582C930067FD43 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82AA17E117582C930067FD43 /* SoundCloud.bundle */; };
 		82E898621754FAEA002F5637 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E898611754FAEA002F5637 /* AVFoundation.framework */; };
 		82E8986517566896002F5637 /* RecordingHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E8986417566896002F5637 /* RecordingHandler.m */; };
 		82E898681756DB76002F5637 /* SessionEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E898671756DB76002F5637 /* SessionEndViewController.m */; };
@@ -29,6 +42,20 @@
 /* Begin PBXFileReference section */
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		82556A8517546E2100DBACC1 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
+		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
+		82AA17C9175817560067FD43 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libJSONKit.a; path = "JSONKit/build/Release-iphoneos/libJSONKit.a"; sourceTree = "<group>"; };
+		82AA17CA175817560067FD43 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
+		82AA17CB175817560067FD43 /* libOHAttributedLabel.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libOHAttributedLabel.a; path = "OHAttributedLabel/build/Release-iphoneos/libOHAttributedLabel.a"; sourceTree = "<group>"; };
+		82AA17CF1758175B0067FD43 /* libSoundCloudUI.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSoundCloudUI.a; path = "CocoaSoundCloudUI/build/Release-iphoneos/libSoundCloudUI.a"; sourceTree = "<group>"; };
+		82AA17D1175818C80067FD43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		82AA17D3175818D20067FD43 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		82AA17D4175818D20067FD43 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		82AA17D7175818DA0067FD43 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		82AA17D9175818E00067FD43 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		82AA17DB175818E90067FD43 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		82AA17DE175821BB0067FD43 /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
+		82AA17DF175821BB0067FD43 /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
+		82AA17E117582C930067FD43 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = SoundCloud.bundle; path = ../CocoaSoundCloudUI/SoundCloud.bundle; sourceTree = "<group>"; };
 		82E898611754FAEA002F5637 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82E8986317566896002F5637 /* RecordingHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingHandler.h; sourceTree = "<group>"; };
 		82E8986417566896002F5637 /* RecordingHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingHandler.m; sourceTree = "<group>"; };
@@ -61,6 +88,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AA17D01758175B0067FD43 /* libSoundCloudUI.a in Frameworks */,
+				82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */,
+				82AA17CD175817560067FD43 /* libOAuth2Client.a in Frameworks */,
+				82AA17CE175817560067FD43 /* libOHAttributedLabel.a in Frameworks */,
+				82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */,
+				82AA17DC175818E90067FD43 /* CoreText.framework in Frameworks */,
+				82AA17DA175818E00067FD43 /* Security.framework in Frameworks */,
+				82AA17D8175818DA0067FD43 /* CoreLocation.framework in Frameworks */,
+				82AA17D5175818D20067FD43 /* AddressBook.framework in Frameworks */,
+				82AA17D6175818D20067FD43 /* AddressBookUI.framework in Frameworks */,
+				82AA17D2175818C80067FD43 /* QuartzCore.framework in Frameworks */,
 				82E898621754FAEA002F5637 /* AVFoundation.framework in Frameworks */,
 				82F3F3231753036900586EA3 /* UIKit.framework in Frameworks */,
 				82F3F3251753036900586EA3 /* Foundation.framework in Frameworks */,
@@ -71,9 +109,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82AA17DD1758195D0067FD43 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				82AA17CF1758175B0067FD43 /* libSoundCloudUI.a */,
+				82AA17C9175817560067FD43 /* libJSONKit.a */,
+				82AA17CA175817560067FD43 /* libOAuth2Client.a */,
+				82AA17CB175817560067FD43 /* libOHAttributedLabel.a */,
+				82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		82F3F3161753036900586EA3 = {
 			isa = PBXGroup;
 			children = (
+				82AA17DD1758195D0067FD43 /* Libraries */,
 				82F3F3281753036900586EA3 /* SRecord */,
 				82F3F3211753036900586EA3 /* Frameworks */,
 				82F3F3201753036900586EA3 /* Products */,
@@ -91,6 +142,12 @@
 		82F3F3211753036900586EA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82AA17DB175818E90067FD43 /* CoreText.framework */,
+				82AA17D9175818E00067FD43 /* Security.framework */,
+				82AA17D7175818DA0067FD43 /* CoreLocation.framework */,
+				82AA17D3175818D20067FD43 /* AddressBook.framework */,
+				82AA17D4175818D20067FD43 /* AddressBookUI.framework */,
+				82AA17D1175818C80067FD43 /* QuartzCore.framework */,
 				82E898611754FAEA002F5637 /* AVFoundation.framework */,
 				82F3F3221753036900586EA3 /* UIKit.framework */,
 				82F3F3241753036900586EA3 /* Foundation.framework */,
@@ -103,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				82F3F343175307FA00586EA3 /* MainStoryboard.storyboard */,
+				82F3F3311753036900586EA3 /* SRecordAppDelegate.h */,
+				82F3F3321753036900586EA3 /* SRecordAppDelegate.m */,
 				82F3F3451753086100586EA3 /* SRecordMenuViewController.h */,
 				82F3F3461753086100586EA3 /* SRecordMenuViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
@@ -113,10 +172,11 @@
 				82E8986417566896002F5637 /* RecordingHandler.m */,
 				82F3F348175308E600586EA3 /* EditSentencesViewController.h */,
 				82F3F349175308E600586EA3 /* EditSentencesViewController.m */,
-				82F3F3311753036900586EA3 /* SRecordAppDelegate.h */,
-				82F3F3321753036900586EA3 /* SRecordAppDelegate.m */,
 				82F3F34B175318FA00586EA3 /* SentenceCell.h */,
 				82F3F34C175318FB00586EA3 /* SentenceCell.m */,
+				82AA17DE175821BB0067FD43 /* SRConstants.h */,
+				82AA17DF175821BB0067FD43 /* SRConstants.m */,
+				82AA17E117582C930067FD43 /* SoundCloud.bundle */,
 				82F3F3291753036900586EA3 /* Supporting Files */,
 			);
 			path = SRecord;
@@ -193,6 +253,7 @@
 				82F3F3371753036900586EA3 /* Default@2x.png in Resources */,
 				82F3F3391753036900586EA3 /* Default-568h@2x.png in Resources */,
 				82F3F344175307FA00586EA3 /* MainStoryboard.storyboard in Resources */,
+				82AA17E217582C930067FD43 /* SoundCloud.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +272,7 @@
 				82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */,
 				82E8986517566896002F5637 /* RecordingHandler.m in Sources */,
 				82E898681756DB76002F5637 /* SessionEndViewController.m in Sources */,
+				82AA17E0175821BB0067FD43 /* SRConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +353,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SRecord/SRecord-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./**";
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -302,7 +366,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SRecord/SRecord-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./**";
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

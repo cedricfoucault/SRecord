@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class RecordingHandler;
 
 @interface SessionEndViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableArray *recordings; // recordings to be uploaded
 
 - (void)startUploading;
+- (void)loginToSC;
 
 @end

@@ -12,9 +12,11 @@
 
 @property (copy, nonatomic) NSURL *fileURL;
 @property (copy, nonatomic) NSString *transcript;
+@property (nonatomic) NSInteger sessionNo;
 
 - (id) initWithFileURL:(NSURL *)URL;
 - (id) initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript;
+- (id) initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript sessionNo:(NSInteger) sessionNo;
 
 
 @end

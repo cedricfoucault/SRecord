@@ -7,8 +7,15 @@
 //
 
 #import "SRecordAppDelegate.h"
+#import <SoundCloudAPI/SCAPI.h>
 
 @implementation SRecordAppDelegate
+
++ (void) initialize {
+    [SCSoundCloud setClientID:@"594b084ba824302cc253b4e46cdd4760"
+                       secret:@"90c52ca729a6c2035e80056a13c2a89b"
+                  redirectURL:[NSURL URLWithString:@"srecord://oauth2"]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
