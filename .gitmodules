@@ -13,3 +13,6 @@
 [submodule "CocoaSoundCloudUI"]
 	path = CocoaSoundCloudUI
 	url = git://github.com/soundcloud/CocoaSoundCloudUI.git
+[submodule "JASidePanels"]
+	path = JASidePanels
+	url = https://github.com/gotosleep/JASidePanels.git

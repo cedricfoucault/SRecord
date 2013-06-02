@@ -6,18 +6,18 @@
 //  Copyright (c) 2013 Cédric Foucault. All rights reserved.
 //
 
-#import "SRecordMenuViewController.h"
+#import "HomeViewController.h"
 #import "EditSentencesViewController.h"
 #import "SessionViewController.h"
 
-@interface SRecordMenuViewController ()
+@interface HomeViewController ()
 
 - (NSString *)sentencesFilePath;
 - (NSArray *)loadSentences;
 
 @end
 
-@implementation SRecordMenuViewController
+@implementation HomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

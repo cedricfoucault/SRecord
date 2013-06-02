@@ -8,6 +8,7 @@
 
 #import "EditSentencesViewController.h"
 #import "SentenceCell.h"
+#import "SentencesController.h"
 
 @interface EditSentencesViewController ()
 
@@ -27,6 +28,15 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Custom initialization
+        self.dataSource = [[SentencesController alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,6 +46,16 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.sentences = [NSMutableArray arrayWithArray:[self.dataSource loadSentences]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.dataSource saveSentences:self.sentences];
 }
 
 - (void)didReceiveMemoryWarning

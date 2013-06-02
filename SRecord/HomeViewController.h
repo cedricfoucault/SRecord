@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SRecordMenuViewController : UIViewController
+@interface HomeViewController : UIViewController
 
 @property (strong, readonly, nonatomic) NSArray *sentences;
+
 - (void)saveSentences:(NSArray *)sentences;
 
 - (IBAction)done:(UIStoryboardSegue *)segue;

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		036BA32E43DF4C9FBFFDE49B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64637E18BC8B41FEB3A18E4A /* libPods.a */; };
+		8200F447175BC67C008CD99D /* SidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F446175BC67C008CD99D /* SidePanelController.m */; };
+		8200F450175BC9CB008CD99D /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F44D175BC9CB008CD99D /* JASidePanelController.m */; };
+		8200F451175BC9CB008CD99D /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F44F175BC9CB008CD99D /* UIViewController+JASidePanel.m */; };
+		8200F455175BCE7F008CD99D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F454175BCE7F008CD99D /* MenuViewController.m */; };
+		8200F458175BD702008CD99D /* SentencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F457175BD702008CD99D /* SentencesController.m */; };
+		82139B2F175BE50C00A9CB22 /* SCConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
 		82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */; };
 		82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C9175817560067FD43 /* libJSONKit.a */; };
@@ -35,7 +41,7 @@
 		82F3F3371753036900586EA3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F3F3361753036900586EA3 /* Default@2x.png */; };
 		82F3F3391753036900586EA3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F3F3381753036900586EA3 /* Default-568h@2x.png */; };
 		82F3F344175307FA00586EA3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82F3F343175307FA00586EA3 /* MainStoryboard.storyboard */; };
-		82F3F3471753086100586EA3 /* SRecordMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F3F3461753086100586EA3 /* SRecordMenuViewController.m */; };
+		82F3F3471753086100586EA3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F3F3461753086100586EA3 /* HomeViewController.m */; };
 		82F3F34A175308E600586EA3 /* EditSentencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F3F349175308E600586EA3 /* EditSentencesViewController.m */; };
 		82F3F34D175318FB00586EA3 /* SentenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F3F34C175318FB00586EA3 /* SentenceCell.m */; };
 /* End PBXBuildFile section */
@@ -43,6 +49,18 @@
 /* Begin PBXFileReference section */
 		074E5A1418E44604BC035189 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		64637E18BC8B41FEB3A18E4A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8200F445175BC67C008CD99D /* SidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelController.h; sourceTree = "<group>"; };
+		8200F446175BC67C008CD99D /* SidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelController.m; sourceTree = "<group>"; };
+		8200F44C175BC9CB008CD99D /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASidePanelController.h; path = JASidePanels/JASidePanels/Source/JASidePanelController.h; sourceTree = SOURCE_ROOT; };
+		8200F44D175BC9CB008CD99D /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASidePanelController.m; path = JASidePanels/JASidePanels/Source/JASidePanelController.m; sourceTree = SOURCE_ROOT; };
+		8200F44E175BC9CB008CD99D /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+JASidePanel.h"; path = "JASidePanels/JASidePanels/Source/UIViewController+JASidePanel.h"; sourceTree = SOURCE_ROOT; };
+		8200F44F175BC9CB008CD99D /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+JASidePanel.m"; path = "JASidePanels/JASidePanels/Source/UIViewController+JASidePanel.m"; sourceTree = SOURCE_ROOT; };
+		8200F453175BCE7F008CD99D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		8200F454175BCE7F008CD99D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		8200F456175BD702008CD99D /* SentencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentencesController.h; sourceTree = "<group>"; };
+		8200F457175BD702008CD99D /* SentencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentencesController.m; sourceTree = "<group>"; };
+		82139B2D175BE50C00A9CB22 /* SCConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCConnectionManager.h; sourceTree = "<group>"; };
+		82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCConnectionManager.m; sourceTree = "<group>"; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		82556A8517546E2100DBACC1 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
@@ -78,8 +96,8 @@
 		82F3F3361753036900586EA3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		82F3F3381753036900586EA3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		82F3F343175307FA00586EA3 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		82F3F3451753086100586EA3 /* SRecordMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRecordMenuViewController.h; sourceTree = "<group>"; };
-		82F3F3461753086100586EA3 /* SRecordMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRecordMenuViewController.m; sourceTree = "<group>"; };
+		82F3F3451753086100586EA3 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		82F3F3461753086100586EA3 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		82F3F348175308E600586EA3 /* EditSentencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSentencesViewController.h; sourceTree = "<group>"; };
 		82F3F349175308E600586EA3 /* EditSentencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSentencesViewController.m; sourceTree = "<group>"; };
 		82F3F34B175318FA00586EA3 /* SentenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentenceCell.h; sourceTree = "<group>"; };
@@ -113,6 +131,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8200F452175BC9D6008CD99D /* JASidePanel */ = {
+			isa = PBXGroup;
+			children = (
+				8200F44E175BC9CB008CD99D /* UIViewController+JASidePanel.h */,
+				8200F44F175BC9CB008CD99D /* UIViewController+JASidePanel.m */,
+				8200F44C175BC9CB008CD99D /* JASidePanelController.h */,
+				8200F44D175BC9CB008CD99D /* JASidePanelController.m */,
+			);
+			name = JASidePanel;
+			path = SRecord;
+			sourceTree = "<group>";
+		};
 		82AA17DD1758195D0067FD43 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				82AA17DD1758195D0067FD43 /* Libraries */,
+				8200F452175BC9D6008CD99D /* JASidePanel */,
 				82F3F3281753036900586EA3 /* SRecord */,
 				82F3F3211753036900586EA3 /* Frameworks */,
 				82F3F3201753036900586EA3 /* Products */,
@@ -168,8 +199,12 @@
 				82F3F343175307FA00586EA3 /* MainStoryboard.storyboard */,
 				82F3F3311753036900586EA3 /* SRecordAppDelegate.h */,
 				82F3F3321753036900586EA3 /* SRecordAppDelegate.m */,
-				82F3F3451753086100586EA3 /* SRecordMenuViewController.h */,
-				82F3F3461753086100586EA3 /* SRecordMenuViewController.m */,
+				8200F445175BC67C008CD99D /* SidePanelController.h */,
+				8200F446175BC67C008CD99D /* SidePanelController.m */,
+				8200F453175BCE7F008CD99D /* MenuViewController.h */,
+				8200F454175BCE7F008CD99D /* MenuViewController.m */,
+				82F3F3451753086100586EA3 /* HomeViewController.h */,
+				82F3F3461753086100586EA3 /* HomeViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
 				82556A8517546E2100DBACC1 /* SessionViewController.m */,
 				82E898661756DB76002F5637 /* SessionEndViewController.h */,
@@ -180,6 +215,10 @@
 				82F3F349175308E600586EA3 /* EditSentencesViewController.m */,
 				82F3F34B175318FA00586EA3 /* SentenceCell.h */,
 				82F3F34C175318FB00586EA3 /* SentenceCell.m */,
+				8200F456175BD702008CD99D /* SentencesController.h */,
+				8200F457175BD702008CD99D /* SentencesController.m */,
+				82139B2D175BE50C00A9CB22 /* SCConnectionManager.h */,
+				82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */,
 				82AA17DE175821BB0067FD43 /* SRConstants.h */,
 				82AA17DF175821BB0067FD43 /* SRConstants.m */,
 				82AA17E117582C930067FD43 /* SoundCloud.bundle */,
@@ -305,13 +344,19 @@
 			files = (
 				82F3F32F1753036900586EA3 /* main.m in Sources */,
 				82F3F3331753036900586EA3 /* SRecordAppDelegate.m in Sources */,
-				82F3F3471753086100586EA3 /* SRecordMenuViewController.m in Sources */,
+				82F3F3471753086100586EA3 /* HomeViewController.m in Sources */,
 				82F3F34A175308E600586EA3 /* EditSentencesViewController.m in Sources */,
 				82F3F34D175318FB00586EA3 /* SentenceCell.m in Sources */,
 				82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */,
 				82E8986517566896002F5637 /* RecordingHandler.m in Sources */,
 				82E898681756DB76002F5637 /* SessionEndViewController.m in Sources */,
 				82AA17E0175821BB0067FD43 /* SRConstants.m in Sources */,
+				8200F447175BC67C008CD99D /* SidePanelController.m in Sources */,
+				8200F450175BC9CB008CD99D /* JASidePanelController.m in Sources */,
+				8200F451175BC9CB008CD99D /* UIViewController+JASidePanel.m in Sources */,
+				8200F455175BCE7F008CD99D /* MenuViewController.m in Sources */,
+				8200F458175BD702008CD99D /* SentencesController.m in Sources */,
+				82139B2F175BE50C00A9CB22 /* SCConnectionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
