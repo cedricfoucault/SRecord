@@ -11,7 +11,6 @@
 
 @interface SentenceCell : UITableViewCell <UITextFieldDelegate>
 
-@property (copy, nonatomic) NSIndexPath *index;
 @property (weak, nonatomic) IBOutlet UITextField *sentenceInput;
 @property (unsafe_unretained, nonatomic) id<SentenceCellDelegate> delegate;
 

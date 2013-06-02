@@ -29,6 +29,8 @@
 - (void)stopRecording;
 - (void)nextState;
 - (void)endSession;
+- (void)loginToSC;
+- (void)startUploadingWithCompletionHandler:(void (^)(NSError *))handler;
 
 
 @end

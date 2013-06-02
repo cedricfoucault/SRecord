@@ -47,33 +47,37 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of sentences + 1 for insertion
-    return [self.sentences count] + 1;
+    return [self.sentences count];
+//    return [self.sentences count] + 1;
 }
 
-- (BOOL)indexPathPointToSentenceCell:(NSIndexPath *)indexPath {
-    return indexPath.row < [self.sentences count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([self indexPathPointToSentenceCell:indexPath]) {
-        // Retrieve the cell
-        static NSString *SentenceCellIdentifier = @"DefaultSentenceCell";
-        SentenceCell *cell = (SentenceCell *) [tableView dequeueReusableCellWithIdentifier:SentenceCellIdentifier forIndexPath:indexPath];
-        
-        // Configure the cell...
-        NSString *sentence = [self.sentences objectAtIndex:indexPath.row];
-        cell.sentenceInput.text = sentence;
-        cell.index = indexPath;
-        cell.delegate = self;
-        return cell;
-    } else {
-        // Insertion cell
-        static NSString *InsertionCellIdentifier = @"InsertionCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:InsertionCellIdentifier forIndexPath:indexPath];
-        return cell;
-    }
+- (SentenceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Retrieve the cell
+    static NSString *SentenceCellIdentifier = @"DefaultSentenceCell";
+    SentenceCell *cell = (SentenceCell *) [tableView dequeueReusableCellWithIdentifier:SentenceCellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    NSString *sentence = [self.sentences objectAtIndex:indexPath.row];
+    cell.sentenceInput.text = sentence;
+    cell.delegate = self;
+    return cell;
+    
+//    if ([self indexPathPointToSentenceCell:indexPath]) {
+//        // Retrieve the cell
+//        static NSString *SentenceCellIdentifier = @"DefaultSentenceCell";
+//        SentenceCell *cell = (SentenceCell *) [tableView dequeueReusableCellWithIdentifier:SentenceCellIdentifier forIndexPath:indexPath];
+//        
+//        // Configure the cell...
+//        NSString *sentence = [self.sentences objectAtIndex:indexPath.row];
+//        cell.sentenceInput.text = sentence;
+//        cell.delegate = self;
+//        return cell;
+//    } else {
+//        // Insertion cell
+//        static NSString *InsertionCellIdentifier = @"InsertionCell";
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:InsertionCellIdentifier forIndexPath:indexPath];
+//        return cell;
+//    }
 }
 
 /*
@@ -107,21 +111,23 @@
 */
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self indexPathPointToSentenceCell:indexPath]) {
-        return UITableViewCellEditingStyleDelete;
-    } else {
-        return UITableViewCellEditingStyleInsert;
-    }
+    return UITableViewCellEditingStyleDelete;
+//    if ([self indexPathPointToSentenceCell:indexPath]) {
+//        return UITableViewCellEditingStyleDelete;
+//    } else {
+//        return UITableViewCellEditingStyleInsert;
+//    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self deleteSentenceAtIndexPath:indexPath];
-    } else {
-        if (editingStyle == UITableViewCellEditingStyleInsert) {
-            [self addNewSentence];
-        }
     }
+//    else {
+//        if (editingStyle == UITableViewCellEditingStyleInsert) {
+//            [self addNewSentence];
+//        }
+//    }
 }
 
 /*
@@ -148,15 +154,25 @@
 
 - (void)deleteSentenceAtIndexPath:(NSIndexPath *)indexPath {
     [self.sentences removeObjectAtIndex:indexPath.row];
-    [self.tableView reloadData];
+    [self.tableView deleteRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexPath, nil]
+                          withRowAnimation:UITableViewRowAnimationFade];
+//    [self.tableView reloadData];
 }
 
 - (void)addNewSentence {
-    if ([self.sentences respondsToSelector:@selector(addObject)]) {
-        NSLog(@"sentences responds to addObject selector");
-    }
+//    if ([self.sentences respondsToSelector:@selector(addObject)]) {
+//        NSLog(@"sentences responds to addObject selector");
+//    }
+    // add in the data source
     [self.sentences addObject:@""];
-    [self.tableView reloadData];
+    // add the new cell
+    NSIndexPath *lastCellIndex = [NSIndexPath indexPathForRow:([self.sentences count] - 1) inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[[NSArray alloc] initWithObjects:lastCellIndex, nil]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    // give focus to the new text field
+    SentenceCell *newCell = (SentenceCell *) [self.tableView cellForRowAtIndexPath:lastCellIndex];
+    [newCell.sentenceInput becomeFirstResponder];
+//    [self.tableView reloadData];
 }
 
 - (IBAction)switchEditMode:(UIBarButtonItem *)sender {
@@ -169,8 +185,17 @@
     }
 }
 
+- (IBAction)addAction:(UIBarButtonItem *)sender {
+    [self addNewSentence];
+}
+
 - (void)sentenceCellContentDidChange:(SentenceCell *)sender {
-    [self.sentences replaceObjectAtIndex:sender.index.row withObject:sender.sentenceInput.text];
+    NSIndexPath *cellPath = [self.tableView indexPathForCell:sender];
+    [self.sentences replaceObjectAtIndex:cellPath.row withObject:sender.sentenceInput.text];
+}
+
+- (BOOL)indexPathPointToSentenceCell:(NSIndexPath *)indexPath {
+    return indexPath.row < [self.sentences count];
 }
 
 //- (void)setEditing:(BOOL)editing animated:(BOOL)animated {

@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSMutableArray *recordings; // recordings to be uploaded
 
-- (void)startUploading;
+- (void)startUploadingWithCompletionHandler:(void (^)(NSError *))handler;
 - (void)loginToSC;
 
 @end

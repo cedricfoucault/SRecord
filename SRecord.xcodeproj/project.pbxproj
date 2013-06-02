@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036BA32E43DF4C9FBFFDE49B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64637E18BC8B41FEB3A18E4A /* libPods.a */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
 		82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */; };
 		82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C9175817560067FD43 /* libJSONKit.a */; };
@@ -40,13 +41,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		074E5A1418E44604BC035189 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		64637E18BC8B41FEB3A18E4A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		82556A8517546E2100DBACC1 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
-		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
-		82AA17C9175817560067FD43 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libJSONKit.a; path = "JSONKit/build/Release-iphoneos/libJSONKit.a"; sourceTree = "<group>"; };
-		82AA17CA175817560067FD43 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
-		82AA17CB175817560067FD43 /* libOHAttributedLabel.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libOHAttributedLabel.a; path = "OHAttributedLabel/build/Release-iphoneos/libOHAttributedLabel.a"; sourceTree = "<group>"; };
-		82AA17CF1758175B0067FD43 /* libSoundCloudUI.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSoundCloudUI.a; path = "CocoaSoundCloudUI/build/Release-iphoneos/libSoundCloudUI.a"; sourceTree = "<group>"; };
+		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
+		82AA17C9175817560067FD43 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = "JSONKit/build/Release-iphoneos/libJSONKit.a"; sourceTree = "<group>"; };
+		82AA17CA175817560067FD43 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
+		82AA17CB175817560067FD43 /* libOHAttributedLabel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOHAttributedLabel.a; path = "OHAttributedLabel/build/Release-iphoneos/libOHAttributedLabel.a"; sourceTree = "<group>"; };
+		82AA17CF1758175B0067FD43 /* libSoundCloudUI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoundCloudUI.a; path = "CocoaSoundCloudUI/build/Release-iphoneos/libSoundCloudUI.a"; sourceTree = "<group>"; };
 		82AA17D1175818C80067FD43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		82AA17D3175818D20067FD43 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		82AA17D4175818D20067FD43 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -55,7 +58,7 @@
 		82AA17DB175818E90067FD43 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		82AA17DE175821BB0067FD43 /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
 		82AA17DF175821BB0067FD43 /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
-		82AA17E117582C930067FD43 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = SoundCloud.bundle; path = ../CocoaSoundCloudUI/SoundCloud.bundle; sourceTree = "<group>"; };
+		82AA17E117582C930067FD43 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SoundCloud.bundle; path = ../CocoaSoundCloudUI/SoundCloud.bundle; sourceTree = "<group>"; };
 		82E898611754FAEA002F5637 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82E8986317566896002F5637 /* RecordingHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingHandler.h; sourceTree = "<group>"; };
 		82E8986417566896002F5637 /* RecordingHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingHandler.m; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 				82F3F3231753036900586EA3 /* UIKit.framework in Frameworks */,
 				82F3F3251753036900586EA3 /* Foundation.framework in Frameworks */,
 				82F3F3271753036900586EA3 /* CoreGraphics.framework in Frameworks */,
+				036BA32E43DF4C9FBFFDE49B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +132,7 @@
 				82F3F3281753036900586EA3 /* SRecord */,
 				82F3F3211753036900586EA3 /* Frameworks */,
 				82F3F3201753036900586EA3 /* Products */,
+				074E5A1418E44604BC035189 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +157,7 @@
 				82F3F3221753036900586EA3 /* UIKit.framework */,
 				82F3F3241753036900586EA3 /* Foundation.framework */,
 				82F3F3261753036900586EA3 /* CoreGraphics.framework */,
+				64637E18BC8B41FEB3A18E4A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,9 +209,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 82F3F33C1753036900586EA3 /* Build configuration list for PBXNativeTarget "SRecord" */;
 			buildPhases = (
+				4FCEEBA41855443E82623E62 /* Check Pods Manifest.lock */,
 				82F3F31B1753036900586EA3 /* Sources */,
 				82F3F31C1753036900586EA3 /* Frameworks */,
 				82F3F31D1753036900586EA3 /* Resources */,
+				8104A31A37F344A7AEB20A7E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,6 +266,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4FCEEBA41855443E82623E62 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		8104A31A37F344A7AEB20A7E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		82F3F31B1753036900586EA3 /* Sources */ = {
@@ -350,26 +389,44 @@
 		};
 		82F3F33D1753036900586EA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 074E5A1418E44604BC035189 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cédric Foucault (K237W276Z4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SRecord/SRecord-Prefix.pch";
-				HEADER_SEARCH_PATHS = "./**";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"./**",
+				);
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CBDE5B35-09CC-456B-BC52-DBD9696DA1C2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		82F3F33E1753036900586EA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 074E5A1418E44604BC035189 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cédric Foucault (K237W276Z4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SRecord/SRecord-Prefix.pch";
-				HEADER_SEARCH_PATHS = "./**";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"./**",
+				);
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CBDE5B35-09CC-456B-BC52-DBD9696DA1C2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSMutableArray *sentences;
 
 - (IBAction)switchEditMode:(UIBarButtonItem *)sender;
+- (IBAction)addAction:(UIBarButtonItem *)sender;
 
 @end
