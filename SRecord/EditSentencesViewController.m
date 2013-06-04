@@ -81,23 +81,6 @@
     cell.sentenceInput.text = sentence;
     cell.delegate = self;
     return cell;
-    
-//    if ([self indexPathPointToSentenceCell:indexPath]) {
-//        // Retrieve the cell
-//        static NSString *SentenceCellIdentifier = @"DefaultSentenceCell";
-//        SentenceCell *cell = (SentenceCell *) [tableView dequeueReusableCellWithIdentifier:SentenceCellIdentifier forIndexPath:indexPath];
-//        
-//        // Configure the cell...
-//        NSString *sentence = [self.sentences objectAtIndex:indexPath.row];
-//        cell.sentenceInput.text = sentence;
-//        cell.delegate = self;
-//        return cell;
-//    } else {
-//        // Insertion cell
-//        static NSString *InsertionCellIdentifier = @"InsertionCell";
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:InsertionCellIdentifier forIndexPath:indexPath];
-//        return cell;
-//    }
 }
 
 /*
@@ -106,27 +89,6 @@
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
 }
 */
 
@@ -150,14 +112,22 @@
 //    }
 }
 
-/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    NSUInteger fromIndex = fromIndexPath.row;
+    NSUInteger toIndex = toIndexPath.row;
+    NSString *sentence = [self.sentences objectAtIndex:fromIndex];
+    [self.sentences removeObjectAtIndex:fromIndex];
+    [self.sentences insertObject:sentence atIndex:toIndex];
+}
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
 
 #pragma mark - Table view delegate
 

@@ -12,14 +12,19 @@
 #import <CoreAudio/CoreAudioTypes.h>
 #import <stdlib.h>
 #import "RecordingHandler.h"
-#import "SessionEndViewController.h"
 #import <SoundCloudUI/SCUI.h>
 #import "SRConstants.h"
 #import <SVProgressHUD.h>
+#import "SCConnectionManager.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface SessionViewController ()
 
 @property (nonatomic) int fileCount;
+//@property (strong, nonatomic) UIImage *startRecordIcon;
+//@property (strong, nonatomic) UIImage *startRecordPressedIcon;
+//@property (strong, nonatomic) UIImage *stopRecordIcon;
 
 - (NSString *)popSentence;
 - (NSURL *)newFileURL;
@@ -38,6 +43,17 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Custom initialization
+//        self.startRecordIcon = [UIImage imageNamed:@"Record-Normal-icon.png"];
+//        self.startRecordPressedIcon = [UIImage imageNamed:@"Record-Pressed-icon.png"];
+//        self.stopRecordIcon = [UIImage imageNamed:@"stop-record-icon.png"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,14 +68,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"ShowSessionEnd"]) {
-        SessionEndViewController *endController = [segue destinationViewController];
-        endController.recordings = self.recordingsDone;
-        self.recordingsDone = nil;
-    }
-}
-
 - (void)startNewSessionWithSentences:(NSArray *)sentences {
     // reset file count for this session
     self.fileCount = 0;
@@ -70,17 +78,42 @@
     [self removeOldRecordings];
 }
 
-- (IBAction)record:(UIButton *)recButton {
+- (IBAction)handleTouchUpInside:(UIButton *)recButton {
+//    recButton.layer.cornerRadius = 0.0;
+//    recButton.layer.borderWidth = 1.0;
+//    recButton.layer.hidden = NO;
+//    recButton.layer.masksToBounds = YES;
     if (self.isRecording) {
         [self stopRecording];
         [self commitRecording];
         [self nextState];
+//        [recButton setImage:self.startRecordIcon forState:UIControlStateNormal];
+//        [recButton setImage:self.startRecordPressedIcon forState:UIControlStateHighlighted];
         [recButton setTitle:@"Record" forState:UIControlStateNormal];
         [recButton setTitle:@"Record" forState:UIControlStateHighlighted];
     } else {
         [self startRecording];
+//        [recButton setImage:self.stopRecordIcon forState:UIControlStateNormal];
+//        [recButton setImage:self.stopRecordIcon forState:UIControlStateHighlighted];
         [recButton setTitle:@"Stop" forState:UIControlStateNormal];
         [recButton setTitle:@"Stop" forState:UIControlStateHighlighted];
+    }
+}
+
+- (IBAction)handleTouchDown:(UIButton *)recButton {
+    if (self.isRecording) {
+        // pause recording in order not to record the "tap" sound
+        [self.soundRecorder pause];
+    } else {
+        
+    }
+}
+
+- (IBAction)handleTouchUpOutside:(UIButton *)sender {
+    if (self.isRecording) {
+        // if we were recording, the recorder was paused when button was touched down
+        // we have to resume it since the user decided not to click the button after all
+        [self.soundRecorder record];
     }
 }
 
@@ -124,19 +157,24 @@
     if (buttonIndex == [alertView cancelButtonIndex]) {
         [self performSegueWithIdentifier:@"CancelSession" sender:self];
     } else {
-//        [self performSegueWithIdentifier:@"ShowSessionEnd" sender:self];
         // login to soundcloud if necessary
-        if (![self isLoggedin]) {
-            [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeBlack];
-            [self loginToSC];
+        if (![SCConnectionManager isLoggedIn]) {
+            [SCConnectionManager presentLoginViewControllerWithPresenter:self completion:^(NSError *error) {
+                // upload the recordings
+                [self startUploadingWithCompletionHandler:^(NSError *error) {
+                    // go back to main menu
+                    [SVProgressHUD showSuccessWithStatus:@"Uploaded"];
+                    [self performSegueWithIdentifier:@"DoneSession" sender:self];
+                }];
+            }];
+        } else {
+            // upload the recordings
+            [self startUploadingWithCompletionHandler:^(NSError *error) {
+                // go back to main menu
+                [SVProgressHUD showSuccessWithStatus:@"Uploaded"];
+                [self performSegueWithIdentifier:@"DoneSession" sender:self];
+            }];
         }
-        // upload the recordings
-        [self startUploadingWithCompletionHandler:^(NSError *error) {
-            // go back to main menu
-            //        [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"Uploaded"];
-            [self performSegueWithIdentifier:@"DoneSession" sender:self];
-        }];
     }
 }
 
@@ -162,42 +200,9 @@
     return recordingHandler;
 }
 
-- (void)loginToSC {
-    NSLog(@"try to login");
-    //    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:kSCAccountType
-    //                                                              username:kSRSoundCloudUsername
-    //                                                              password:kSRSoundCloudPassword];
-    [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
-        SCLoginViewController *loginViewController;
-        loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
-                                                                      completionHandler:^(NSError *error){
-                                                                          
-                                                                          if (SC_CANCELED(error)) {
-                                                                              NSLog(@"Canceled!");
-                                                                          } else if (error) {
-                                                                              NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
-                                                                          } else {
-                                                                              NSLog(@"Done!");
-                                                                          }
-                                                                          if (![SCSoundCloud account]) {
-                                                                              NSLog(@"No SC account");
-                                                                          } else {
-                                                                              NSLog(@"Yes SC account");
-                                                                          }
-                                                                      }];
-        
-        [self presentViewController:loginViewController animated:YES completion:nil];
-        
-    }];
-    if (![self isLoggedin]) {
-        NSLog(@"No SC account: login failed");
-    }
-}
-
 - (void)startUploadingWithCompletionHandler:(void (^)(NSError *))handler {
     NSLog(@"Start uploading");
     // upload recording by recording
-    //    [self uploadRecordingsWithEnumerator:[self.recordings objectEnumerator] completionHandler:handler];
     NSUInteger n = 1;
     NSUInteger N = [self.recordingsDone count];
     NSEnumerator *enumerator = [self.recordingsDone objectEnumerator];
@@ -247,7 +252,6 @@
                          }
                      }
                      // upload next recording
-                     //                     [self uploadRecordingsWithEnumerator:enumerator completionHandler:handler];
                      [self uploadRecordingsWithEnumerator:enumerator fileCount:(n + 1) fileTotal:N completionHandler:handler];
                  }];
     } else { // no more recording to upload
@@ -285,17 +289,6 @@
     NSString *sentence = [self.sentencesRemaining objectAtIndex:0];
     [self.sentencesRemaining removeObjectAtIndex:0];
     return sentence;
-}
-
-- (BOOL)isLoggedin {
-    return ([SCSoundCloud account] != nil);
-}
-
-- (void)accountDidChange:(NSNotification *)aNotification; {
-    if (![self isLoggedin]) {
-        // Login again
-        [self loginToSC];
-    }
 }
 
 @end

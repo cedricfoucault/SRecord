@@ -12,7 +12,6 @@
 
 - (NSString *)sentencesFilePath;
 
-
 @end
 
 @implementation SentencesController

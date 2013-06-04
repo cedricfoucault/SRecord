@@ -9,6 +9,7 @@
 #import "SidePanelController.h"
 #import "MenuViewController.h"
 #import "SentencesController.h"
+#import <SCSoundCloud.h>
 
 @implementation SidePanelController
 

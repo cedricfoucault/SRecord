@@ -9,6 +9,8 @@
 #import "MenuViewController.h"
 #import "SidePanelController.h"
 #import "SCConnectionManager.h"
+#import <SVProgressHUD.h>
+#import <SCUIErrors.h>
 
 @interface MenuViewController ()
 
@@ -17,24 +19,6 @@
 @end
 
 @implementation MenuViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        // Custom initialization
-        self.connectionManager = [[SCConnectionManager alloc] init];
-    }
-    return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -81,24 +65,49 @@
             self.sidePanelController.centerPanel = self.sidePanelController.sentencesViewController;
             break;
         case CONNECTIONSTATUS_ROWINDEX:
-            if ([self.connectionManager isLoggedIn]) {
-                [self.connectionManager logOut];
+            if ([SCConnectionManager isLoggedIn]) {
+                [SCConnectionManager logOut];
                 [self updateConnectionStatusLabel];
+                [SVProgressHUD showSuccessWithStatus:@"Logged out"];
             } else {
-                [self.connectionManager presentLoginViewControllerWithPresenter:self.sidePanelController completion:^() {
-                    [self updateConnectionStatusLabel];
-                }];
+                void (^login_handler)(NSError *) = ^(NSError *error) {
+                    if (error) {
+                        if (SC_CANCELED(error)) {
+                            // login was canceled, do nothing
+                        } else if ([[error domain] isEqualToString:NSURLErrorDomain]) {
+                            NSString *errorMsg;
+                            switch ([error code]) {
+                                case NSURLErrorCannotFindHost:
+                                    errorMsg = NSLocalizedString(@"Cannot find specified host. Retype URL.", nil);
+                                    break;
+                                case NSURLErrorCannotConnectToHost:
+                                    errorMsg = NSLocalizedString(@"Cannot connect to specified host. Server may be down.", nil);
+                                    break;
+                                case NSURLErrorNotConnectedToInternet:
+                                    errorMsg = NSLocalizedString(@"Cannot connect to the internet. Service may not be available.", nil);
+                                    break;
+                                default:
+                                    errorMsg = [error localizedDescription];
+                                    break;
+                            }
+                        }
+                    } else { // no error
+                        [self updateConnectionStatusLabel];
+                        if ([SCConnectionManager isLoggedIn]) {
+                            [SVProgressHUD showSuccessWithStatus:@"Logged in"];
+                        }
+                    }
+                };
+                [SCConnectionManager presentLoginViewControllerWithPresenter:self.sidePanelController
+                                                                  completion:login_handler];
             }
-//            [self.sidePanelController toggleLeftPanel:self];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
     }
-//    [self.sidePanelController toggleLeftPanel:self];
-//    [self.sidePanelController showCenterPanelAnimated:YES];
 }
 
 - (void) updateConnectionStatusLabel {
-    if ([self.connectionManager isLoggedIn]) {
+    if ([SCConnectionManager isLoggedIn]) {
         self.connectionStatusLabel.text = @"Log Out";
     } else {
         self.connectionStatusLabel.text = @"Log In";

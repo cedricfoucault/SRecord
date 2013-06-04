@@ -14,6 +14,12 @@
 		8200F455175BCE7F008CD99D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F454175BCE7F008CD99D /* MenuViewController.m */; };
 		8200F458175BD702008CD99D /* SentencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8200F457175BD702008CD99D /* SentencesController.m */; };
 		82139B2F175BE50C00A9CB22 /* SCConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */; };
+		82139B31175C1C4A00A9CB22 /* startbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B30175C1C4A00A9CB22 /* startbutton.png */; };
+		82139B37175C3A3600A9CB22 /* record-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B35175C3A3600A9CB22 /* record-icon.png */; };
+		82139B38175C3A3600A9CB22 /* stop-record-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B36175C3A3600A9CB22 /* stop-record-icon.png */; };
+		82139B3C175C3FB200A9CB22 /* Record-Hot-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B39175C3FB200A9CB22 /* Record-Hot-icon.png */; };
+		82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */; };
+		82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
 		82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */; };
 		82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C9175817560067FD43 /* libJSONKit.a */; };
@@ -30,7 +36,6 @@
 		82AA17E217582C930067FD43 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82AA17E117582C930067FD43 /* SoundCloud.bundle */; };
 		82E898621754FAEA002F5637 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E898611754FAEA002F5637 /* AVFoundation.framework */; };
 		82E8986517566896002F5637 /* RecordingHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E8986417566896002F5637 /* RecordingHandler.m */; };
-		82E898681756DB76002F5637 /* SessionEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E898671756DB76002F5637 /* SessionEndViewController.m */; };
 		82F3F3231753036900586EA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F3221753036900586EA3 /* UIKit.framework */; };
 		82F3F3251753036900586EA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F3241753036900586EA3 /* Foundation.framework */; };
 		82F3F3271753036900586EA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F3261753036900586EA3 /* CoreGraphics.framework */; };
@@ -61,6 +66,12 @@
 		8200F457175BD702008CD99D /* SentencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentencesController.m; sourceTree = "<group>"; };
 		82139B2D175BE50C00A9CB22 /* SCConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCConnectionManager.h; sourceTree = "<group>"; };
 		82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCConnectionManager.m; sourceTree = "<group>"; };
+		82139B30175C1C4A00A9CB22 /* startbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = startbutton.png; path = ../../../../Desktop/startbutton.png; sourceTree = "<group>"; };
+		82139B35175C3A3600A9CB22 /* record-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-icon.png"; sourceTree = "<group>"; };
+		82139B36175C3A3600A9CB22 /* stop-record-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-record-icon.png"; sourceTree = "<group>"; };
+		82139B39175C3FB200A9CB22 /* Record-Hot-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Hot-icon.png"; sourceTree = "<group>"; };
+		82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Normal-icon.png"; sourceTree = "<group>"; };
+		82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Pressed-icon.png"; sourceTree = "<group>"; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		82556A8517546E2100DBACC1 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
@@ -80,8 +91,6 @@
 		82E898611754FAEA002F5637 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82E8986317566896002F5637 /* RecordingHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingHandler.h; sourceTree = "<group>"; };
 		82E8986417566896002F5637 /* RecordingHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingHandler.m; sourceTree = "<group>"; };
-		82E898661756DB76002F5637 /* SessionEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionEndViewController.h; sourceTree = "<group>"; };
-		82E898671756DB76002F5637 /* SessionEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionEndViewController.m; sourceTree = "<group>"; };
 		82F3F31F1753036900586EA3 /* SRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F3F3221753036900586EA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		82F3F3241753036900586EA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,6 +152,19 @@
 			path = SRecord;
 			sourceTree = "<group>";
 		};
+		82139B34175C3A3600A9CB22 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				82139B35175C3A3600A9CB22 /* record-icon.png */,
+				82139B39175C3FB200A9CB22 /* Record-Hot-icon.png */,
+				82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */,
+				82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */,
+				82139B36175C3A3600A9CB22 /* stop-record-icon.png */,
+			);
+			name = assets;
+			path = SRecord/assets;
+			sourceTree = "<group>";
+		};
 		82AA17DD1758195D0067FD43 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +180,7 @@
 		82F3F3161753036900586EA3 = {
 			isa = PBXGroup;
 			children = (
+				82139B34175C3A3600A9CB22 /* assets */,
 				82AA17DD1758195D0067FD43 /* Libraries */,
 				8200F452175BC9D6008CD99D /* JASidePanel */,
 				82F3F3281753036900586EA3 /* SRecord */,
@@ -207,8 +230,6 @@
 				82F3F3461753086100586EA3 /* HomeViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
 				82556A8517546E2100DBACC1 /* SessionViewController.m */,
-				82E898661756DB76002F5637 /* SessionEndViewController.h */,
-				82E898671756DB76002F5637 /* SessionEndViewController.m */,
 				82E8986317566896002F5637 /* RecordingHandler.h */,
 				82E8986417566896002F5637 /* RecordingHandler.m */,
 				82F3F348175308E600586EA3 /* EditSentencesViewController.h */,
@@ -231,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				82F3F32A1753036900586EA3 /* SRecord-Info.plist */,
+				82139B30175C1C4A00A9CB22 /* startbutton.png */,
 				82F3F32B1753036900586EA3 /* InfoPlist.strings */,
 				82F3F32E1753036900586EA3 /* main.m */,
 				82F3F3301753036900586EA3 /* SRecord-Prefix.pch */,
@@ -301,6 +323,12 @@
 				82F3F3391753036900586EA3 /* Default-568h@2x.png in Resources */,
 				82F3F344175307FA00586EA3 /* MainStoryboard.storyboard in Resources */,
 				82AA17E217582C930067FD43 /* SoundCloud.bundle in Resources */,
+				82139B31175C1C4A00A9CB22 /* startbutton.png in Resources */,
+				82139B37175C3A3600A9CB22 /* record-icon.png in Resources */,
+				82139B38175C3A3600A9CB22 /* stop-record-icon.png in Resources */,
+				82139B3C175C3FB200A9CB22 /* Record-Hot-icon.png in Resources */,
+				82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */,
+				82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +377,6 @@
 				82F3F34D175318FB00586EA3 /* SentenceCell.m in Sources */,
 				82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */,
 				82E8986517566896002F5637 /* RecordingHandler.m in Sources */,
-				82E898681756DB76002F5637 /* SessionEndViewController.m in Sources */,
 				82AA17E0175821BB0067FD43 /* SRConstants.m in Sources */,
 				8200F447175BC67C008CD99D /* SidePanelController.m in Sources */,
 				8200F450175BC9CB008CD99D /* JASidePanelController.m in Sources */,

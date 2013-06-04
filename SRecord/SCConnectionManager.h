@@ -10,9 +10,8 @@
 
 @interface SCConnectionManager : NSObject
 
-@property (readonly, getter = isLoggedIn, nonatomic) BOOL loggedIn;
-
-- (void)presentLoginViewControllerWithPresenter:(UIViewController *)presenter completion:(void (^)())handler;
-- (void)logOut;
++ (BOOL) isLoggedIn;
++ (void) presentLoginViewControllerWithPresenter:(UIViewController *)presenter completion:(void (^)(NSError *))handler;
++ (void) logOut;
 
 @end

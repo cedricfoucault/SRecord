@@ -21,16 +21,17 @@
 @property (strong, nonatomic) RecordingHandler *currentRecording;
 
 
-- (void)startNewSessionWithSentences:(NSArray *)sentences;
-- (void)removeOldRecordings;
-- (IBAction)record:(UIButton *)recButton;
-- (RecordingHandler *)prepareNewRecording;
-- (void)startRecording;
-- (void)stopRecording;
-- (void)nextState;
-- (void)endSession;
-- (void)loginToSC;
-- (void)startUploadingWithCompletionHandler:(void (^)(NSError *))handler;
+- (void) startNewSessionWithSentences:(NSArray *)sentences;
+- (void) removeOldRecordings;
+- (IBAction) handleTouchUpInside:(UIButton *)recButton;
+- (IBAction) handleTouchDown:(UIButton *)recButton;
+- (IBAction)handleTouchUpOutside:(UIButton *)recButton;
+- (RecordingHandler *) prepareNewRecording;
+- (void) startRecording;
+- (void) stopRecording;
+- (void) nextState;
+- (void) endSession;
+- (void) startUploadingWithCompletionHandler:(void (^)(NSError *))handler;
 
 
 @end

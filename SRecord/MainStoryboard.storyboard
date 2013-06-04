@@ -83,7 +83,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8z-FM-AXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-761" y="-2259"/>
+            <point key="canvasLocation" x="-1777" y="-3406"/>
         </scene>
         <!--Edit Sentences View Controller - Sentences-->
         <scene sceneID="lWS-Zy-0so">
@@ -136,18 +136,11 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Sentences" id="asH-8A-8xZ">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="IH4-40-s3h">
-                            <connections>
-                                <segue destination="0Fp-eO-0Ig" kind="unwind" identifier="DoneEdit" unwindAction="done:" id="VaT-0x-Glr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sentences" id="asH-8A-8xZ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKK-mG-0eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="0Fp-eO-0Ig" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-850" y="-1065"/>
         </scene>
@@ -173,13 +166,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SRecord" id="77R-X8-QfS">
-                        <barButtonItem key="rightBarButtonItem" title="Edit Sentences" id="Rvc-2q-udG">
-                            <connections>
-                                <segue destination="oyT-ge-V6M" kind="modal" identifier="EditSentences" id="oNH-H4-xyS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="SRecord" id="77R-X8-QfS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nM0-QK-146" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,23 +181,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sample sentence to be spoken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZIE-c9-L5X">
-                                <rect key="frame" x="20" y="476" width="728" height="51"/>
+                                <rect key="frame" x="20" y="380" width="728" height="243"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vQY-St-ora">
-                                <rect key="frame" x="298" y="713" width="172" height="66"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <rect key="frame" x="302" y="648" width="164" height="83"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <state key="normal" title="Record">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="record:" destination="zbw-gB-rq4" eventType="touchUpInside" id="3xb-I7-N6X"/>
+                                    <action selector="handleTouchDown:" destination="zbw-gB-rq4" eventType="touchDown" id="JjA-dO-8UK"/>
+                                    <action selector="handleTouchUpInside:" destination="zbw-gB-rq4" eventType="touchUpInside" id="CI5-5p-JEh"/>
+                                    <action selector="handleTouchUpOutside:" destination="zbw-gB-rq4" eventType="touchUpOutside" id="SoB-1i-L7F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -282,6 +271,52 @@
             <point key="canvasLocation" x="-1800" y="-1065"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="EditSentencesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditSentencesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addAction:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="switchEditMode:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="HomeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="JASidePanelController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JASidePanelController.h"/>
+        </class>
+        <class className="MenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="connectionStatusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SentenceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SentenceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="sentenceInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SessionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SessionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleTouchDown:" candidateClass="UIButton"/>
+                <relationship kind="action" name="handleTouchUpInside:" candidateClass="UIButton"/>
+                <relationship kind="action" name="handleTouchUpOutside:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sentenceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SidePanelController" superclassName="JASidePanelController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SidePanelController.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
