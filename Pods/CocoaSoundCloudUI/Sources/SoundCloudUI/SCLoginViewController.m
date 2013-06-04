@@ -173,13 +173,13 @@
         self.completionHandler(error);
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SCLocalizedString(@"auth_error", @"Auth Error")
-                                                    message:SCLocalizedString(@"auth_error_message", @"Auth Message Error")
-                                                   delegate:nil
-                                          cancelButtonTitle:SCLocalizedString(@"alert_ok", @"OK")
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SCLocalizedString(@"auth_error", @"Auth Error")
+//                                                    message:SCLocalizedString(@"auth_error_message", @"Auth Message Error")
+//                                                   delegate:nil
+//                                          cancelButtonTitle:SCLocalizedString(@"alert_ok", @"OK")
+//                                          otherButtonTitles:nil];
+//    [alert show];
+//    [alert release];
 
     //[[self modalPresentingViewController] dismissModalViewControllerAnimated:YES];
 }

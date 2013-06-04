@@ -17,6 +17,7 @@
 #import <SVProgressHUD.h>
 #import "SCConnectionManager.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SRAlertViewDelegate.h"
 
 
 @interface SessionViewController ()
@@ -25,10 +26,19 @@
 //@property (strong, nonatomic) UIImage *startRecordIcon;
 //@property (strong, nonatomic) UIImage *startRecordPressedIcon;
 //@property (strong, nonatomic) UIImage *stopRecordIcon;
+@property (strong, nonatomic) SRAlertViewDelegate *alertDelegate;
 
 - (NSString *)popSentence;
 - (NSURL *)newFileURL;
 - (void)commitRecording;
+- (void)uploadRecordingsWithEnumerator:(NSEnumerator *)enumerator
+                             fileCount:(NSUInteger)n fileTotal:(NSUInteger)N
+                            doWhenDone:(void (^)())successHandler
+                            doOnCancel:(void (^)())cancelHandler;
+- (void)uploadRecording:(RecordingHandler *)rec
+              fileCount:(NSUInteger)n fileTotal:(NSUInteger)N
+                 doNext:(void (^)())successHandler
+             doOnCancel:(void (^)())cancelHandler;
 
 @end
 
@@ -159,17 +169,25 @@
     } else {
         // login to soundcloud if necessary
         if (![SCConnectionManager isLoggedIn]) {
-            [SCConnectionManager presentLoginViewControllerWithPresenter:self completion:^(NSError *error) {
+            void (^successHandler)() = ^() {
                 // upload the recordings
-                [self startUploadingWithCompletionHandler:^(NSError *error) {
+                [self startUploadingWithCompletionHandler:^() {
                     // go back to main menu
                     [SVProgressHUD showSuccessWithStatus:@"Uploaded"];
                     [self performSegueWithIdentifier:@"DoneSession" sender:self];
                 }];
-            }];
+            };
+            void (^cancelHandler)() = ^() {
+                // go back to main menu
+                [self performSegueWithIdentifier:@"CancelSession" sender:self];
+            };
+                 
+            [SCConnectionManager presentLoginViewControllerWithPresenter:self
+                                                             doOnSuccess:successHandler
+                                                              doOnCancel:cancelHandler];
         } else {
             // upload the recordings
-            [self startUploadingWithCompletionHandler:^(NSError *error) {
+            [self startUploadingWithCompletionHandler:^() {
                 // go back to main menu
                 [SVProgressHUD showSuccessWithStatus:@"Uploaded"];
                 [self performSegueWithIdentifier:@"DoneSession" sender:self];
@@ -200,66 +218,219 @@
     return recordingHandler;
 }
 
-- (void)startUploadingWithCompletionHandler:(void (^)(NSError *))handler {
+- (void)startUploadingWithCompletionHandler:(void (^)())handler {
     NSLog(@"Start uploading");
     // upload recording by recording
     NSUInteger n = 1;
     NSUInteger N = [self.recordingsDone count];
     NSEnumerator *enumerator = [self.recordingsDone objectEnumerator];
     [SVProgressHUD showProgress:0.0 status:[NSString stringWithFormat:@"Uploading %d of %d", n, N] maskType:SVProgressHUDMaskTypeBlack];
-    [self uploadRecordingsWithEnumerator:enumerator fileCount:n fileTotal:N completionHandler:handler];
+    [self uploadRecordingsWithEnumerator:enumerator fileCount:n fileTotal:N doWhenDone:handler
+                              doOnCancel:^() {
+                                  [self performSegueWithIdentifier:@"CancelSession" sender:self];
+                              }];
+//    [self uploadRecordingsWithEnumerator:enumerator fileCount:n fileTotal:N completionHandler:handler];
 }
 
-- (void)uploadRecordingsWithEnumerator:(NSEnumerator *)enumerator fileCount:(NSUInteger)n fileTotal:(NSUInteger)N completionHandler:(void (^)(NSError *))handler {
+//- (void)uploadRecordingsWithEnumerator:(NSEnumerator *)enumerator
+//                             fileCount:(NSUInteger)n fileTotal:(NSUInteger)N
+//                     completionHandler:(void (^)(NSError *))handler {
+//    // get the next recording to upload
+//    RecordingHandler *rec = [enumerator nextObject];
+//    if (rec) {
+//        // set parameters for the track to upload
+//        SCAccount *account = [SCSoundCloud account];
+//        BOOL private = YES;
+//        NSString *trackTitle = [NSString stringWithFormat:@"%@ S%04d", rec.transcript, rec.sessionNo];
+//        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                    rec.fileURL, @"track[asset_data]",
+//                                    trackTitle, @"track[title]",
+//                                    (private) ? @"private" : @"public", @"track[sharing]", //a BOOL
+//                                    @"recording", @"track[type]",
+//                                    @"description", @"A sample recorded from session ",
+//                                    //             sharingConnections, @"track[post_to][][id]", //array of id strings
+//                                    nil];
+//        // send POST request to /tracks
+//        [SCRequest performMethod:SCRequestMethodPOST
+//                      onResource:[NSURL URLWithString:@"https://api.soundcloud.com/tracks.json"]
+//                 usingParameters:parameters
+//                     withAccount:account
+//          sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal){
+//              CGFloat progress = (double)(bytesSent * n) / (bytesTotal * N);
+//              NSString *status = [NSString stringWithFormat:@"Uploading %d of %d", n, N];
+//              [SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeBlack];
+//          }
+//                 responseHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+//                     if (error) {
+//                         NSString *alertTitle;
+//                         NSString *alertMsg;
+//                         if ([[error domain] isEqualToString:NSURLErrorDomain]) {
+//                             switch ([error code]) {
+//                                 case NSURLErrorNotConnectedToInternet:
+//                                     alertTitle = @"No Internet Connection";
+//                                     alertMsg = @"Cannot connect to the internet. Service may not be available.";
+//                                     break;
+//                                     
+//                                 case NSURLErrorCannotConnectToHost:
+//                                     alertTitle = @"Host Unavailable";
+//                                     alertMsg = @"Cannot connect to SoundCloud. Server may be down.";
+//                                     break;
+//                                     
+//                                 default:
+//                                     alertTitle = @"Request failed";
+//                                     alertMsg = [SCConnectionManager alertGenericMsgWithError:error];
+//                                     break;
+//                             }
+//                         } else {
+//                             alertTitle = @"Upload failed";
+//                             alertMsg = [SCConnectionManager alertGenericMsgWithError:error];
+//                         }
+//                     } else {
+//                         if (![response isKindOfClass:[NSHTTPURLResponse class]]) {
+//                             NSLog(@"Expecting a NSURLHTTPResponse.");
+//                         } else {
+//                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+//                             if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] < 300) {
+//                                 // Ok, the upload succeed
+//                                 // Parse the response if you want to have the info of the uploaded track.
+////                                 NSLog(@"Uploaded %@.", [[rec.fileURL absoluteString] lastPathComponent]);
+//                             }
+//                         }
+//                         // upload next recording
+//                         [self uploadRecordingsWithEnumerator:enumerator
+//                                                    fileCount:(n + 1) fileTotal:N
+//                                            completionHandler:handler];
+//                     }
+//                     // upload next recording
+////                     [self uploadRecordingsWithEnumerator:enumerator fileCount:(n + 1) fileTotal:N completionHandler:handler];
+//                 }];
+//    } else { // no more recording to upload
+//        // when done, call the completion handler
+//        handler(nil);
+//    }
+//    
+//}
+
+- (void)uploadRecordingsWithEnumerator:(NSEnumerator *)enumerator
+                             fileCount:(NSUInteger)n fileTotal:(NSUInteger)N
+                            doWhenDone:(void (^)())successHandler
+                            doOnCancel:(void (^)())cancelHandler {
     // get the next recording to upload
     RecordingHandler *rec = [enumerator nextObject];
     if (rec) {
-        // set parameters for the track to upload
-        SCAccount *account = [SCSoundCloud account];
-        BOOL private = YES;
-        NSString *trackTitle = [NSString stringWithFormat:@"%@ S%04d", rec.transcript, rec.sessionNo];
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    rec.fileURL, @"track[asset_data]",
-                                    trackTitle, @"track[title]",
-                                    (private) ? @"private" : @"public", @"track[sharing]", //a BOOL
-                                    @"recording", @"track[type]",
-                                    @"description", @"A sample recorded from session ",
-                                    //             sharingConnections, @"track[post_to][][id]", //array of id strings
-                                    nil];
-        // send POST request to /tracks
-        [SCRequest performMethod:SCRequestMethodPOST
-                      onResource:[NSURL URLWithString:@"https://api.soundcloud.com/tracks.json"]
-                 usingParameters:parameters
-                     withAccount:account
-          sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal){
-              CGFloat progress = (double)(bytesSent * n) / (bytesTotal * N);
-              NSString *status = [NSString stringWithFormat:@"Uploading %d of %d", n, N];
-              [SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeBlack];
-          }
-                 responseHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-                     if (error) {
-                         NSLog(@"Ooops, something went wrong! %@", [error localizedDescription]);
-                     } else {
-                         if (![response isKindOfClass:[NSHTTPURLResponse class]]) {
-                             NSLog(@"Expecting a NSURLHTTPResponse.");
-                         } else {
-                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                             if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] < 300) {
-                                 // Ok, the upload succeed
-                                 // Parse the response if you want to have the info of the uploaded track.
-                                 NSLog(@"Uploaded %@.", [[rec.fileURL absoluteString] lastPathComponent]);
-                             }
-                         }
-                     }
-                     // upload next recording
-                     [self uploadRecordingsWithEnumerator:enumerator fileCount:(n + 1) fileTotal:N completionHandler:handler];
-                 }];
+        // show progress
+        CGFloat progress = (double)(n - 1) / N;
+        NSString *status = [NSString stringWithFormat:@"Uploading %d of %d", n, N];
+        [SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeBlack];
+        // upload the recording and recurse when done
+        [self uploadRecording:rec fileCount:n fileTotal:N
+                       doNext:^() {
+                           [self uploadRecordingsWithEnumerator:enumerator
+                                                      fileCount:(n + 1) fileTotal:N
+                                                     doWhenDone:successHandler
+                                                     doOnCancel:cancelHandler];
+                       }
+                   doOnCancel:cancelHandler];
+        
     } else { // no more recording to upload
-        // when done, call the completion handler
-        handler(nil);
+        successHandler();
     }
+}
+
+- (void)uploadRecording:(RecordingHandler *)rec
+              fileCount:(NSUInteger)n fileTotal:(NSUInteger)N
+                 doNext:(void (^)())completionHandler
+             doOnCancel:(void (^)())cancelHandler {
+    // set parameters for the track to upload
+    SCAccount *account = [SCSoundCloud account];
+    BOOL private = YES;
+    NSString *trackTitle = [NSString stringWithFormat:@"%@ S%04d", rec.transcript, rec.sessionNo];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                rec.fileURL, @"track[asset_data]",
+                                trackTitle, @"track[title]",
+                                (private) ? @"private" : @"public", @"track[sharing]", //a BOOL
+                                @"recording", @"track[type]",
+                                @"description", @"A sample recorded from session ",
+                                //             sharingConnections, @"track[post_to][][id]", //array of id strings
+                                nil];
+    // response handler
+    void (^responseHandler)(NSURLResponse *, NSData *, NSError *);
+    responseHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSString *alertTitle;
+            NSString *alertMsg;
+            if ([[error domain] isEqualToString:NSURLErrorDomain]) {
+                switch ([error code]) {
+                    case NSURLErrorNotConnectedToInternet:
+                        alertTitle = @"No Internet Connection";
+                        alertMsg = @"Cannot connect to the internet. Service may not be available.";
+                        break;
+                        
+                    case NSURLErrorCannotConnectToHost:
+                        alertTitle = @"Host Unavailable";
+                        alertMsg = @"Cannot connect to SoundCloud. Server may be down.";
+                        break;
+                        
+                    default:
+                        alertTitle = @"Request failed";
+                        alertMsg = [SCConnectionManager alertGenericMsgWithError:error];
+                        break;
+                }
+            } else {
+                alertTitle = @"Upload failed";
+                alertMsg = [SCConnectionManager alertGenericMsgWithError:error];
+            }
+            void (^alertViewHandler)(UIAlertView *, NSInteger);
+            alertViewHandler = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex == [alertView cancelButtonIndex]) {
+                    // cancel
+                    cancelHandler();
+                } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Skip"]) {
+                    // do next
+                    completionHandler();
+                } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Try again"]) {
+                    // try to upload recording again
+                    [self uploadRecording:rec fileCount:n fileTotal:N doNext:completionHandler doOnCancel:cancelHandler];
+                }
+            };
+            self.alertDelegate = [[SRAlertViewDelegate alloc] initWithHandler:alertViewHandler];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                                message:alertMsg
+                                                               delegate:self.alertDelegate
+                                                      cancelButtonTitle:@"Cancel"
+                                                      otherButtonTitles:@"Skip", @"Try again", nil];
+            [alertView show];
+        } else {
+            if (![response isKindOfClass:[NSHTTPURLResponse class]]) {
+                NSLog(@"Expecting a NSURLHTTPResponse.");
+            } else {
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] < 300) {
+                    // Ok, the upload succeed
+                    // Parse the response if you want to have the info of the uploaded track.
+                }
+            }
+            // do next
+            completionHandler();
+        }
+    };
+    
+    
+    // send POST request to /tracks
+    [SCRequest performMethod:SCRequestMethodPOST
+                  onResource:[NSURL URLWithString:@"https://api.soundcloud.com/tracks.json"]
+             usingParameters:parameters
+                 withAccount:account
+      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal){
+          CGFloat progress = (double)bytesSent / (bytesTotal * N) + (double)(n - 1) / N;
+          NSString *status = [NSString stringWithFormat:@"Uploading %d of %d", n, N];
+          [SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeBlack];
+      }
+             responseHandler:responseHandler];
     
 }
+
+
 
 - (void)removeOldRecordings {
     NSFileManager *fileManager = [NSFileManager defaultManager];

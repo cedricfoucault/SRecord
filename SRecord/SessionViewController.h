@@ -31,7 +31,7 @@
 - (void) stopRecording;
 - (void) nextState;
 - (void) endSession;
-- (void) startUploadingWithCompletionHandler:(void (^)(NSError *))handler;
+- (void) startUploadingWithCompletionHandler:(void (^)())handler;
 
 
 @end

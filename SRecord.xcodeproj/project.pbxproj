@@ -29,6 +29,7 @@
 		82AA17DC175818E90067FD43 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17DB175818E90067FD43 /* CoreText.framework */; };
 		82AA17E0175821BB0067FD43 /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA17DF175821BB0067FD43 /* SRConstants.m */; };
 		82AA17E217582C930067FD43 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82AA17E117582C930067FD43 /* SoundCloud.bundle */; };
+		82AB42F8175DBF500072B264 /* SRAlertViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AB42F7175DBF500072B264 /* SRAlertViewDelegate.m */; };
 		82E898621754FAEA002F5637 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E898611754FAEA002F5637 /* AVFoundation.framework */; };
 		82E8986517566896002F5637 /* RecordingHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E8986417566896002F5637 /* RecordingHandler.m */; };
 		82F3F3231753036900586EA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F3221753036900586EA3 /* UIKit.framework */; };
@@ -83,6 +84,8 @@
 		82AA17DE175821BB0067FD43 /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
 		82AA17DF175821BB0067FD43 /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
 		82AA17E117582C930067FD43 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SoundCloud.bundle; path = ../CocoaSoundCloudUI/SoundCloud.bundle; sourceTree = "<group>"; };
+		82AB42F6175DBF500072B264 /* SRAlertViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAlertViewDelegate.h; sourceTree = "<group>"; };
+		82AB42F7175DBF500072B264 /* SRAlertViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertViewDelegate.m; sourceTree = "<group>"; };
 		82E898611754FAEA002F5637 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82E8986317566896002F5637 /* RecordingHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingHandler.h; sourceTree = "<group>"; };
 		82E8986417566896002F5637 /* RecordingHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingHandler.m; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				82F3F3461753086100586EA3 /* HomeViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
 				82556A8517546E2100DBACC1 /* SessionViewController.m */,
+				82AB42F6175DBF500072B264 /* SRAlertViewDelegate.h */,
+				82AB42F7175DBF500072B264 /* SRAlertViewDelegate.m */,
 				82E8986317566896002F5637 /* RecordingHandler.h */,
 				82E8986417566896002F5637 /* RecordingHandler.m */,
 				82F3F348175308E600586EA3 /* EditSentencesViewController.h */,
@@ -374,6 +379,7 @@
 				8200F455175BCE7F008CD99D /* MenuViewController.m in Sources */,
 				8200F458175BD702008CD99D /* SentencesController.m in Sources */,
 				82139B2F175BE50C00A9CB22 /* SCConnectionManager.m in Sources */,
+				82AB42F8175DBF500072B264 /* SRAlertViewDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
