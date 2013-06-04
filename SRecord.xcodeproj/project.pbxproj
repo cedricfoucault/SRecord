@@ -21,11 +21,6 @@
 		82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */; };
 		82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
-		82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */; };
-		82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17C9175817560067FD43 /* libJSONKit.a */; };
-		82AA17CD175817560067FD43 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17CA175817560067FD43 /* libOAuth2Client.a */; };
-		82AA17CE175817560067FD43 /* libOHAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17CB175817560067FD43 /* libOHAttributedLabel.a */; };
-		82AA17D01758175B0067FD43 /* libSoundCloudUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17CF1758175B0067FD43 /* libSoundCloudUI.a */; };
 		82AA17D2175818C80067FD43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D1175818C80067FD43 /* QuartzCore.framework */; };
 		82AA17D5175818D20067FD43 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D3175818D20067FD43 /* AddressBook.framework */; };
 		82AA17D6175818D20067FD43 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D4175818D20067FD43 /* AddressBookUI.framework */; };
@@ -118,11 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82AA17D01758175B0067FD43 /* libSoundCloudUI.a in Frameworks */,
-				82AA17CC175817560067FD43 /* libJSONKit.a in Frameworks */,
-				82AA17CD175817560067FD43 /* libOAuth2Client.a in Frameworks */,
-				82AA17CE175817560067FD43 /* libOHAttributedLabel.a in Frameworks */,
-				82AA17C81758174E0067FD43 /* libSoundCloudAPI.a in Frameworks */,
 				82AA17DC175818E90067FD43 /* CoreText.framework in Frameworks */,
 				82AA17DA175818E00067FD43 /* Security.framework in Frameworks */,
 				82AA17D8175818DA0067FD43 /* CoreLocation.framework in Frameworks */,
@@ -471,6 +461,10 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CocoaSoundCloudAPI/build/Release-iphoneos\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -493,6 +487,10 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CocoaSoundCloudAPI/build/Release-iphoneos\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

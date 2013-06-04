@@ -5,21 +5,6 @@
       location = "group:SRecord.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:CocoaSoundCloudAPI">
-   </FileRef>
-   <FileRef
-      location = "group:CocoaSoundCloudUI">
-   </FileRef>
-   <FileRef
-      location = "group:JSONKit">
-   </FileRef>
-   <FileRef
-      location = "group:OAuth2Client">
-   </FileRef>
-   <FileRef
-      location = "group:OHAttributedLabel">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
