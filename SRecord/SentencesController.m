@@ -10,13 +10,13 @@
 
 @interface SentencesController ()
 
-- (NSString *)sentencesFilePath;
++ (NSString *)sentencesFilePath;
 
 @end
 
 @implementation SentencesController
 
-- (NSString *)sentencesFilePath {
++ (NSString *)sentencesFilePath {
     static NSString *path = nil;
     if (path == nil) {
         // retrieve document directory
@@ -29,21 +29,12 @@
     return path;
 }
 
-- (NSArray *)loadSentences {
++ (NSArray *)loadSentences {
     return [NSKeyedUnarchiver unarchiveObjectWithFile:[self sentencesFilePath]];
 }
 
-- (void)saveSentences:(NSArray *)sentences {
++ (void)saveSentences:(NSArray *)sentences {
     [NSKeyedArchiver archiveRootObject:sentences toFile:[self sentencesFilePath]];
 }
-
-
-//- (NSArray *)sentences {
-//    NSArray *sentences = [self loadSentences];
-//    if (sentences == nil) {
-//        sentences = [NSArray array];
-//    }
-//    return sentences;
-//}
 
 @end

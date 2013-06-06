@@ -13,7 +13,6 @@
 @interface EditSentencesViewController : UITableViewController <SentenceCellDelegate>
 
 @property (strong, nonatomic) NSMutableArray *sentences;
-@property (strong, nonatomic) SentencesController *dataSource;
 
 - (IBAction)switchEditMode:(UIBarButtonItem *)sender;
 - (IBAction)addAction:(UIBarButtonItem *)sender;

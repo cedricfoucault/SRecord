@@ -11,6 +11,7 @@
 #import "SentencesController.h"
 
 @interface HomeViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *sentencesTableView;
 
 @end
 
@@ -31,41 +32,46 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.sentencesTableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-//- (NSString *)sentencesFilePath {
-//    static NSString *path = nil;
-//    if (path == nil) {
-//        // retrieve document directory
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-//                                                             NSUserDomainMask, YES);
-//        NSString *documentsPath = [paths objectAtIndex:0];
-//        // get filepath in this directory
-//        path = [documentsPath stringByAppendingPathComponent:@"sentences"];
-//    }
-//    return path;
-//}
-//
-//- (NSArray *)loadSentences {
-//    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self sentencesFilePath]];
-//}
-//
-//- (void)saveSentences:(NSArray *)sentences {
-//    [NSKeyedArchiver archiveRootObject:sentences toFile:[self sentencesFilePath]];
-//}
-//
-//
-//- (NSArray *)sentences {
-//    NSArray *sentences = [self loadSentences];
-//    if (sentences == nil) {
-//        sentences = [NSArray array];
-//    }
-//    return sentences;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[SentencesController loadSentences] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Retrieve the cell
+    static NSString *DefaultCellIdentifier = @"BasicCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DefaultCellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    NSString *sentence = [[SentencesController loadSentences] objectAtIndex:indexPath.row];
+    if (![cell.textLabel.text isEqualToString:sentence]) {
+        cell.textLabel.text = sentence;
+    }
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Sentences to record";
+    } else { // should not happen
+        return @"";
+    }
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //    if ([[segue identifier] isEqualToString:@"EditSentences"]) {
@@ -75,7 +81,7 @@
 //    } else
     if ([[segue identifier] isEqualToString:@"StartSession"]) {
         SessionViewController *sessionController = [segue destinationViewController];
-        [sessionController startNewSessionWithSentences:[[[SentencesController alloc] init] loadSentences]];
+        [sessionController startNewSessionWithSentences:[SentencesController loadSentences]];
     }
 }
 

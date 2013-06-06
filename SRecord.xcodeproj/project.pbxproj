@@ -21,6 +21,20 @@
 		82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */; };
 		82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
+		8255AC22175EF1C600C8D022 /* FF0000.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC21175EF1C600C8D022 /* FF0000.png */; };
+		8255AC24175F228F00C8D022 /* EDEDED.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC23175F228F00C8D022 /* EDEDED.png */; };
+		8255AC26175F232500C8D022 /* ADADAD.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC25175F232500C8D022 /* ADADAD.png */; };
+		8255AC2A175F245100C8D022 /* FFCC00.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC29175F245100C8D022 /* FFCC00.png */; };
+		8255AC2C175F252B00C8D022 /* 336699.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC2B175F252B00C8D022 /* 336699.png */; };
+		8255AC2E175F262500C8D022 /* 0099FF.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC2D175F262500C8D022 /* 0099FF.png */; };
+		8255AC30175F268100C8D022 /* 0066FF.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC2F175F268100C8D022 /* 0066FF.png */; };
+		8255AC33175F28E200C8D022 /* LeftToRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8255AC32175F28E100C8D022 /* LeftToRightSegue.m */; };
+		8255AC35175FA3F200C8D022 /* 999999.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC34175FA3F200C8D022 /* 999999.png */; };
+		8255AC37175FA4E700C8D022 /* 000000.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC36175FA4E700C8D022 /* 000000.png */; };
+		8255AC39175FA4F400C8D022 /* 666666.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC38175FA4F400C8D022 /* 666666.png */; };
+		8255AC3B175FA53F00C8D022 /* 333333.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC3A175FA53F00C8D022 /* 333333.png */; };
+		8255AC3E175FA6DD00C8D022 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8255AC3D175FA6DD00C8D022 /* UploadViewController.m */; };
+		8255AC41175FDF4A00C8D022 /* SetCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */; };
 		82AA17D2175818C80067FD43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D1175818C80067FD43 /* QuartzCore.framework */; };
 		82AA17D5175818D20067FD43 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D3175818D20067FD43 /* AddressBook.framework */; };
 		82AA17D6175818D20067FD43 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D4175818D20067FD43 /* AddressBookUI.framework */; };
@@ -70,6 +84,23 @@
 		82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Pressed-icon.png"; sourceTree = "<group>"; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		82556A8517546E2100DBACC1 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
+		8255AC21175EF1C600C8D022 /* FF0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FF0000.png; sourceTree = "<group>"; };
+		8255AC23175F228F00C8D022 /* EDEDED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDEDED.png; sourceTree = "<group>"; };
+		8255AC25175F232500C8D022 /* ADADAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ADADAD.png; sourceTree = "<group>"; };
+		8255AC29175F245100C8D022 /* FFCC00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FFCC00.png; sourceTree = "<group>"; };
+		8255AC2B175F252B00C8D022 /* 336699.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 336699.png; sourceTree = "<group>"; };
+		8255AC2D175F262500C8D022 /* 0099FF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0099FF.png; sourceTree = "<group>"; };
+		8255AC2F175F268100C8D022 /* 0066FF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0066FF.png; sourceTree = "<group>"; };
+		8255AC31175F28E100C8D022 /* LeftToRightSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftToRightSegue.h; sourceTree = "<group>"; };
+		8255AC32175F28E100C8D022 /* LeftToRightSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftToRightSegue.m; sourceTree = "<group>"; };
+		8255AC34175FA3F200C8D022 /* 999999.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 999999.png; sourceTree = "<group>"; };
+		8255AC36175FA4E700C8D022 /* 000000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000000.png; sourceTree = "<group>"; };
+		8255AC38175FA4F400C8D022 /* 666666.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 666666.png; sourceTree = "<group>"; };
+		8255AC3A175FA53F00C8D022 /* 333333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333333.png; sourceTree = "<group>"; };
+		8255AC3C175FA6DC00C8D022 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
+		8255AC3D175FA6DD00C8D022 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
+		8255AC3F175FDF4A00C8D022 /* SetCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCreationViewController.h; sourceTree = "<group>"; };
+		8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCreationViewController.m; sourceTree = "<group>"; };
 		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
 		82AA17C9175817560067FD43 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = "JSONKit/build/Release-iphoneos/libJSONKit.a"; sourceTree = "<group>"; };
 		82AA17CA175817560067FD43 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
@@ -152,6 +183,17 @@
 				82139B39175C3FB200A9CB22 /* Record-Hot-icon.png */,
 				82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */,
 				82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */,
+				8255AC21175EF1C600C8D022 /* FF0000.png */,
+				8255AC29175F245100C8D022 /* FFCC00.png */,
+				8255AC2F175F268100C8D022 /* 0066FF.png */,
+				8255AC2B175F252B00C8D022 /* 336699.png */,
+				8255AC2D175F262500C8D022 /* 0099FF.png */,
+				8255AC34175FA3F200C8D022 /* 999999.png */,
+				8255AC36175FA4E700C8D022 /* 000000.png */,
+				8255AC3A175FA53F00C8D022 /* 333333.png */,
+				8255AC38175FA4F400C8D022 /* 666666.png */,
+				8255AC25175F232500C8D022 /* ADADAD.png */,
+				8255AC23175F228F00C8D022 /* EDEDED.png */,
 				82139B36175C3A3600A9CB22 /* stop-record-icon.png */,
 			);
 			name = assets;
@@ -223,6 +265,10 @@
 				82F3F3461753086100586EA3 /* HomeViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
 				82556A8517546E2100DBACC1 /* SessionViewController.m */,
+				8255AC3C175FA6DC00C8D022 /* UploadViewController.h */,
+				8255AC3D175FA6DD00C8D022 /* UploadViewController.m */,
+				8255AC3F175FDF4A00C8D022 /* SetCreationViewController.h */,
+				8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */,
 				82AB42F6175DBF500072B264 /* SRAlertViewDelegate.h */,
 				82AB42F7175DBF500072B264 /* SRAlertViewDelegate.m */,
 				82E8986317566896002F5637 /* RecordingHandler.h */,
@@ -233,6 +279,8 @@
 				82F3F34C175318FB00586EA3 /* SentenceCell.m */,
 				8200F456175BD702008CD99D /* SentencesController.h */,
 				8200F457175BD702008CD99D /* SentencesController.m */,
+				8255AC31175F28E100C8D022 /* LeftToRightSegue.h */,
+				8255AC32175F28E100C8D022 /* LeftToRightSegue.m */,
 				82139B2D175BE50C00A9CB22 /* SCConnectionManager.h */,
 				82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */,
 				82AA17DE175821BB0067FD43 /* SRConstants.h */,
@@ -324,6 +372,17 @@
 				82139B3C175C3FB200A9CB22 /* Record-Hot-icon.png in Resources */,
 				82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */,
 				82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */,
+				8255AC22175EF1C600C8D022 /* FF0000.png in Resources */,
+				8255AC24175F228F00C8D022 /* EDEDED.png in Resources */,
+				8255AC26175F232500C8D022 /* ADADAD.png in Resources */,
+				8255AC2A175F245100C8D022 /* FFCC00.png in Resources */,
+				8255AC2C175F252B00C8D022 /* 336699.png in Resources */,
+				8255AC2E175F262500C8D022 /* 0099FF.png in Resources */,
+				8255AC30175F268100C8D022 /* 0066FF.png in Resources */,
+				8255AC35175FA3F200C8D022 /* 999999.png in Resources */,
+				8255AC37175FA4E700C8D022 /* 000000.png in Resources */,
+				8255AC39175FA4F400C8D022 /* 666666.png in Resources */,
+				8255AC3B175FA53F00C8D022 /* 333333.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +439,9 @@
 				8200F458175BD702008CD99D /* SentencesController.m in Sources */,
 				82139B2F175BE50C00A9CB22 /* SCConnectionManager.m in Sources */,
 				82AB42F8175DBF500072B264 /* SRAlertViewDelegate.m in Sources */,
+				8255AC33175F28E200C8D022 /* LeftToRightSegue.m in Sources */,
+				8255AC3E175FA6DD00C8D022 /* UploadViewController.m in Sources */,
+				8255AC41175FDF4A00C8D022 /* SetCreationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,10 +529,7 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/CocoaSoundCloudAPI/build/Release-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -493,10 +552,7 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "SRecord/SRecord-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/CocoaSoundCloudAPI/build/Release-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

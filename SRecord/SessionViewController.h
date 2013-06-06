@@ -10,7 +10,7 @@
 #import <AVFoundation/AVAudioRecorder.h>
 @class RecordingHandler;
 
-@interface SessionViewController : UIViewController <AVAudioRecorderDelegate, UIAlertViewDelegate>
+@interface SessionViewController : UIViewController <AVAudioRecorderDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic) NSInteger sessionNo;
 @property (nonatomic, getter=isRecording) BOOL recording;
@@ -19,19 +19,22 @@
 @property (weak, nonatomic) IBOutlet UILabel *sentenceLabel;
 @property (strong, nonatomic) AVAudioRecorder *soundRecorder;
 @property (strong, nonatomic) RecordingHandler *currentRecording;
+@property (weak, nonatomic) IBOutlet UIButton *quitButton;
 
 
-- (void) startNewSessionWithSentences:(NSArray *)sentences;
-- (void) removeOldRecordings;
-- (IBAction) handleTouchUpInside:(UIButton *)recButton;
-- (IBAction) handleTouchDown:(UIButton *)recButton;
+- (void)startNewSessionWithSentences:(NSArray *)sentences;
+- (void)removeOldRecordings;
+- (IBAction)handleTouchUpInside:(UIButton *)recButton;
+- (IBAction)handleTouchDown:(UIButton *)recButton;
 - (IBAction)handleTouchUpOutside:(UIButton *)recButton;
-- (RecordingHandler *) prepareNewRecording;
-- (void) startRecording;
-- (void) stopRecording;
-- (void) nextState;
-- (void) endSession;
-- (void) startUploadingWithCompletionHandler:(void (^)())handler;
+- (IBAction)quitTapped:(UIButton *)sender;
+- (RecordingHandler *)prepareNewRecording;
+- (void)startRecording;
+- (void)stopRecording;
+- (void)nextState;
+- (void)endSession;
+- (void)uploadRecordingsWithCompletionHandler:(void (^)(NSArray *))handler;
+- (void)createSCSetWithTracks:(NSArray *)tracksID completionHandler:(void (^)())handler;
 
 
 @end

@@ -32,7 +32,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
-        self.dataSource = [[SentencesController alloc] init];
     }
     return self;
 }
@@ -49,13 +48,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.sentences = [NSMutableArray arrayWithArray:[SentencesController loadSentences]];
     [super viewWillAppear:animated];
-    self.sentences = [NSMutableArray arrayWithArray:[self.dataSource loadSentences]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [SentencesController saveSentences:self.sentences];
     [super viewWillDisappear:animated];
-    [self.dataSource saveSentences:self.sentences];
 }
 
 - (void)didReceiveMemoryWarning
@@ -168,9 +167,11 @@
 - (IBAction)switchEditMode:(UIBarButtonItem *)sender {
     if (self.editing) {
         sender.title = @"Edit";
+        sender.style = UIBarButtonItemStyleBordered;
         [self setEditing:NO animated:YES];
     } else {
         sender.title = @"Done";
+        sender.style = UIBarButtonItemStyleDone;
         [self setEditing:YES animated:YES];
     }
 }

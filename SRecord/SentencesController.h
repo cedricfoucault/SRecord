@@ -10,7 +10,7 @@
 
 @interface SentencesController : NSObject
 
-- (NSArray *)loadSentences;
-- (void)saveSentences:(NSArray *)sentences;
++ (NSArray *)loadSentences;
++ (void)saveSentences:(NSArray *)sentences;
 
 @end

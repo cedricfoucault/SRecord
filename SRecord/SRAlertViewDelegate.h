@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) void (^handler)(UIAlertView *, NSInteger);
 
-- initWithHandler:(void (^)(UIAlertView *, NSInteger))handler;
+- (id)initWithHandler:(void (^)(UIAlertView *, NSInteger))handler;
 
 @end

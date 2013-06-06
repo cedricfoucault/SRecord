@@ -16,6 +16,5 @@
 @property (strong, nonatomic) UIViewController *homeViewController;
 @property (strong, nonatomic) MenuViewController *menuViewController;
 @property (strong, nonatomic) UIViewController *sentencesViewController;
-@property (strong, nonatomic) SentencesController *sentencesController;
 
 @end

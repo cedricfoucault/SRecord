@@ -8,7 +8,6 @@
 
 #import "SidePanelController.h"
 #import "MenuViewController.h"
-#import "SentencesController.h"
 #import <SCSoundCloud.h>
 
 @implementation SidePanelController
@@ -16,7 +15,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.sentencesController = [[SentencesController alloc] init];
         self.bounceOnCenterPanelChange = NO;
     }
     return self;

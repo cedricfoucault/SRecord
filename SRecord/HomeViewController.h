@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
-
-//@property (strong, readonly, nonatomic) NSArray *sentences;
-
-//- (void)saveSentences:(NSArray *)sentences;
+@interface HomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;
