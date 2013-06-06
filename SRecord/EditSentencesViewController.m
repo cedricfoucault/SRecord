@@ -67,7 +67,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.sentences count];
-//    return [self.sentences count] + 1;
 }
 
 - (SentenceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,22 +92,12 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleDelete;
-//    if ([self indexPathPointToSentenceCell:indexPath]) {
-//        return UITableViewCellEditingStyleDelete;
-//    } else {
-//        return UITableViewCellEditingStyleInsert;
-//    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self deleteSentenceAtIndexPath:indexPath];
     }
-//    else {
-//        if (editingStyle == UITableViewCellEditingStyleInsert) {
-//            [self addNewSentence];
-//        }
-//    }
 }
 
 // Override to support rearranging the table view.
@@ -145,13 +134,9 @@
     [self.sentences removeObjectAtIndex:indexPath.row];
     [self.tableView deleteRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexPath, nil]
                           withRowAnimation:UITableViewRowAnimationFade];
-//    [self.tableView reloadData];
 }
 
 - (void)addNewSentence {
-//    if ([self.sentences respondsToSelector:@selector(addObject)]) {
-//        NSLog(@"sentences responds to addObject selector");
-//    }
     // add in the data source
     [self.sentences addObject:@""];
     // add the new cell
@@ -161,7 +146,6 @@
     // give focus to the new text field
     SentenceCell *newCell = (SentenceCell *) [self.tableView cellForRowAtIndexPath:lastCellIndex];
     [newCell.sentenceInput becomeFirstResponder];
-//    [self.tableView reloadData];
 }
 
 - (IBAction)switchEditMode:(UIBarButtonItem *)sender {
@@ -188,11 +172,6 @@
 - (BOOL)indexPathPointToSentenceCell:(NSIndexPath *)indexPath {
     return indexPath.row < [self.sentences count];
 }
-
-//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-//    [super setEditing:editing animated:animated];
-//    [self.tableView setEditing:editing animated:animated];
-//}
 
 
 @end

@@ -16,7 +16,6 @@
 @interface MenuViewController ()
 
 - (void) updateConnectionStatusLabel;
-- (NSString *) alertGenericMsgWithError:(NSError *)error;
 
 @end
 
@@ -72,97 +71,32 @@
                 [self updateConnectionStatusLabel];
                 [SVProgressHUD showSuccessWithStatus:@"Logged out"];
             } else {
-                void (^successHandler)() = ^() {
+                void (^successHandler)();
+                successHandler = ^() {
                     [self updateConnectionStatusLabel];
                     if ([SCConnectionManager isLoggedIn]) {
                         [SVProgressHUD showSuccessWithStatus:@"Logged in"];
                     }
                 };
-                void (^cancelHandler)() = ^() {};
+                void (^cancelHandler)();
+                cancelHandler = ^() {
+                    [SVProgressHUD showErrorWithStatus:@"Canceled"];
+                };
                 [SCConnectionManager presentLoginViewControllerWithPresenter:self
                                                                  doOnSuccess:successHandler
                                                                   doOnCancel:cancelHandler];
-//                void (^login_handler)(NSError *) = ^(NSError *error) {
-//                    if (error) {
-//                        NSString *alertTitle;
-//                        NSString *alertMsg;
-//                        if (SC_CANCELED(error)) {
-//                            // login was canceled, do nothing
-//                            return;
-//                        } else if ([[error domain] isEqualToString:NSURLErrorDomain]) {
-//                            switch ([error code]) {
-//                                case NSURLErrorNotConnectedToInternet:
-//                                    alertTitle = @"No Internet Connection";
-//                                    alertMsg = @"Cannot connect to the internet. Service may not be available.";
-//                                    break;
-//                                    
-//                                case NSURLErrorCannotConnectToHost:
-//                                    alertTitle = @"Host Unavailable";
-//                                    alertMsg = @"Cannot connect to SoundCloud. Server may be down.";
-//                                    break;
-//                                    
-//                                default:
-//                                    alertTitle = @"Request failed";
-//                                    alertMsg = [self alertGenericMsgWithError:error];
-//                                    break;
-//                            }
-//                        } else if ([[error domain] isEqualToString:NXOAuth2HTTPErrorDomain]) {
-//                            switch ([error code]) {
-//                                case 401:
-//                                    alertTitle = @"Oops";
-//                                    alertMsg = @"The credentials provided seem to be invalid. Please check them and type them again.";
-//                                    break;
-//                                    
-//                                default:
-//                                    alertTitle = @"HTTP error";
-//                                    alertMsg = [self alertGenericMsgWithError:error];
-//                                    break;
-//                            }
-//                        } else {
-//                            alertTitle = @"Log in failed";
-//                            alertMsg = [self alertGenericMsgWithError:error];
-//                        }
-//                        
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-//                                                                        message:alertMsg
-//                                                                       delegate:nil
-//                                                              cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")
-//                                                              otherButtonTitles:nil];
-//                        [alert show];
-//                    } else { // no error
-//                        [self updateConnectionStatusLabel];
-//                        if ([SCConnectionManager isLoggedIn]) {
-//                            [SVProgressHUD showSuccessWithStatus:@"Logged in"];
-//                        }
-//                    }
-//                };
-//                [SCConnectionManager presentLoginViewControllerWithPresenter:self.sidePanelController
-//                                                                  completion:login_handler];
             }
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
     }
 }
 
-- (void) updateConnectionStatusLabel {
+- (void)updateConnectionStatusLabel {
     if ([SCConnectionManager isLoggedIn]) {
         self.connectionStatusLabel.text = @"Log Out";
     } else {
         self.connectionStatusLabel.text = @"Log In";
     }
-}
-
-- (NSString *)alertGenericMsgWithError:(NSError *)error {
-    NSMutableString *msg = [NSMutableString stringWithFormat:@"%@.", [error localizedDescription]];
-    if ([error localizedFailureReason]) {
-        [msg appendString:[NSString stringWithFormat:@" %@.",
-                           [error localizedFailureReason]]];
-    }
-    if ([error localizedRecoverySuggestion]) {
-        [msg appendString:[NSString stringWithFormat:@" %@.",
-                           [error localizedRecoverySuggestion]]];
-    }
-    return [NSString stringWithString:msg];
 }
 
 @end

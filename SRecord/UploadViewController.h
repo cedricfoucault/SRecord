@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UploadViewController : UIViewController
+@interface UploadViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *recordings;
 - (IBAction)okButtonTapped:(id)sender;

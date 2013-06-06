@@ -7,42 +7,20 @@
 //
 
 #import "SCConnectionManager.h"
-//#import <SCSoundCloud.h>
 #import <SCUI.h>
 #import <SCUIErrors.h>
 #import <NXOAuth2Constants.h>
+#import "ErrorHelper.h"
 
 static SCLoginViewController *loginViewController;
 
 @interface SCConnectionManager ()
 
-//@property (strong, nonatomic) SCLoginViewController *loginViewController;
++ (void) presentLoginViewControllerWithPresenter:(UIViewController *)presenter completion:(void (^)(NSError *))handler;
 
 @end
 
 @implementation SCConnectionManager
-
-+ (void) presentLoginViewControllerWithPresenter:(UIViewController *)presenter completion:(void (^)(NSError *))handler {
-    //    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:kSCAccountType
-    //                                                              username:kSRSoundCloudUsername
-    //                                                              password:kSRSoundCloudPassword];
-    [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
-        loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
-                                                                      completionHandler:^(NSError *error){
-                                                                          
-//                                                                          if (SC_CANCELED(error)) {
-//                                                                              NSLog(@"Canceled!");
-//                                                                          } else if (error) {
-//                                                                              NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
-//                                                                          } else {
-//                                                                              NSLog(@"Done!");
-//                                                                          }
-                                                                          handler(error);
-                                                                      }];
-        
-        [presenter presentViewController:loginViewController animated:YES completion:nil];
-    }];
-}
 
 + (void)presentLoginViewControllerWithPresenter:(UIViewController *)presenter doOnSuccess:(void (^)())successHandler doOnCancel:(void (^)())cancelHandler {
     void (^login_handler)(NSError *) = ^(NSError *error) {
@@ -68,7 +46,7 @@ static SCLoginViewController *loginViewController;
                         
                     default:
                         alertTitle = @"Request failed";
-                        alertMsg = [self alertGenericMsgWithError:error];
+                        alertMsg = [ErrorHelper genericMsgWithError:error];
                         break;
                 }
             } else if ([[error domain] isEqualToString:NXOAuth2HTTPErrorDomain]) {
@@ -80,12 +58,12 @@ static SCLoginViewController *loginViewController;
                         
                     default:
                         alertTitle = @"HTTP error";
-                        alertMsg = [self alertGenericMsgWithError:error];
+                        alertMsg = [ErrorHelper genericMsgWithError:error];
                         break;
                 }
             } else {
                 alertTitle = @"Log in failed";
-                alertMsg = [self alertGenericMsgWithError:error];
+                alertMsg = [ErrorHelper genericMsgWithError:error];
             }
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
@@ -102,25 +80,23 @@ static SCLoginViewController *loginViewController;
     [self presentLoginViewControllerWithPresenter:presenter completion:login_handler];
 }
 
++ (void) presentLoginViewControllerWithPresenter:(UIViewController *)presenter completion:(void (^)(NSError *))handler {
+    [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
+        loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
+                                                                      completionHandler:^(NSError *error){
+                                                                          handler(error);
+                                                                      }];
+        
+        [presenter presentViewController:loginViewController animated:YES completion:nil];
+    }];
+}
+
 + (BOOL) isLoggedIn {
     return ([SCSoundCloud account] != nil);
 }
 
 + (void)logOut {
     [SCSoundCloud removeAccess];
-}
-
-+ (NSString *)alertGenericMsgWithError:(NSError *)error {
-    NSMutableString *msg = [NSMutableString stringWithFormat:@"%@.", [error localizedDescription]];
-    if ([error localizedFailureReason]) {
-        [msg appendString:[NSString stringWithFormat:@" %@.",
-                           [error localizedFailureReason]]];
-    }
-    if ([error localizedRecoverySuggestion]) {
-        [msg appendString:[NSString stringWithFormat:@" %@.",
-                           [error localizedRecoverySuggestion]]];
-    }
-    return [NSString stringWithString:msg];
 }
 
 @end

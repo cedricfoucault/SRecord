@@ -20,6 +20,7 @@
 		82139B3C175C3FB200A9CB22 /* Record-Hot-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B39175C3FB200A9CB22 /* Record-Hot-icon.png */; };
 		82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */; };
 		82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */; };
+		8218364F1760527200592D9F /* ErrorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218364E1760527200592D9F /* ErrorHelper.m */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
 		8255AC22175EF1C600C8D022 /* FF0000.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC21175EF1C600C8D022 /* FF0000.png */; };
 		8255AC24175F228F00C8D022 /* EDEDED.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC23175F228F00C8D022 /* EDEDED.png */; };
@@ -82,6 +83,8 @@
 		82139B39175C3FB200A9CB22 /* Record-Hot-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Hot-icon.png"; sourceTree = "<group>"; };
 		82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Normal-icon.png"; sourceTree = "<group>"; };
 		82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Pressed-icon.png"; sourceTree = "<group>"; };
+		8218364D1760527200592D9F /* ErrorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHelper.h; sourceTree = "<group>"; };
+		8218364E1760527200592D9F /* ErrorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHelper.m; sourceTree = "<group>"; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		82556A8517546E2100DBACC1 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		8255AC21175EF1C600C8D022 /* FF0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FF0000.png; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				8255AC32175F28E100C8D022 /* LeftToRightSegue.m */,
 				82139B2D175BE50C00A9CB22 /* SCConnectionManager.h */,
 				82139B2E175BE50C00A9CB22 /* SCConnectionManager.m */,
+				8218364D1760527200592D9F /* ErrorHelper.h */,
+				8218364E1760527200592D9F /* ErrorHelper.m */,
 				82AA17DE175821BB0067FD43 /* SRConstants.h */,
 				82AA17DF175821BB0067FD43 /* SRConstants.m */,
 				82AA17E117582C930067FD43 /* SoundCloud.bundle */,
@@ -442,6 +447,7 @@
 				8255AC33175F28E200C8D022 /* LeftToRightSegue.m in Sources */,
 				8255AC3E175FA6DD00C8D022 /* UploadViewController.m in Sources */,
 				8255AC41175FDF4A00C8D022 /* SetCreationViewController.m in Sources */,
+				8218364F1760527200592D9F /* ErrorHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

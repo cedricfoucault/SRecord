@@ -74,11 +74,6 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([[segue identifier] isEqualToString:@"EditSentences"]) {
-//        UINavigationController *editNavigationViewController = [segue destinationViewController];
-//        EditSentencesViewController *editViewController = (EditSentencesViewController *) editNavigationViewController.topViewController;
-//        editViewController.sentences = [NSMutableArray arrayWithArray:self.sentences];
-//    } else
     if ([[segue identifier] isEqualToString:@"StartSession"]) {
         SessionViewController *sessionController = [segue destinationViewController];
         [sessionController startNewSessionWithSentences:[SentencesController loadSentences]];
@@ -86,22 +81,9 @@
 }
 
 - (IBAction)done:(UIStoryboardSegue *)segue {
-//    if ([[segue identifier] isEqualToString:@"DoneEdit"]) {
-//        // save/get the new sentences
-//        EditSentencesViewController *editViewController = [segue sourceViewController];
-//        NSLog(@"%@", [editViewController.sentences componentsJoinedByString:@", "]);
-//        [self saveSentences:editViewController.sentences];
-//        
-//        // dismiss previous edit view controller
-//        [self dismissViewControllerAnimated:YES completion:NULL];
-//    }
 }
 
-- (void)cancel:(UIStoryboardSegue *)segue {
-//    if ([[segue identifier] isEqualToString:@"CancelEdit"]) {
-//        // dismiss previous edit view controller
-//        [self dismissViewControllerAnimated:YES completion:NULL];
-//    }
+- (IBAction)cancel:(UIStoryboardSegue *)segue {
 }
 
 @end

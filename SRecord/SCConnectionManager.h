@@ -11,11 +11,9 @@
 @interface SCConnectionManager : NSObject
 
 + (BOOL) isLoggedIn;
-+ (void) presentLoginViewControllerWithPresenter:(UIViewController *)presenter completion:(void (^)(NSError *))handler;
 + (void) presentLoginViewControllerWithPresenter:(UIViewController *)presenter
                                       doOnSuccess:(void (^)())successHandler
                                       doOnCancel:(void (^)())cancelHandler;
-+ (NSString *) alertGenericMsgWithError:(NSError *)error;
 + (void) logOut;
 
 @end
