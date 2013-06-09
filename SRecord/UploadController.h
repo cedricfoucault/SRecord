@@ -16,11 +16,11 @@
 
 @end
 
-@interface UploadController : NSObject <UIAlertViewDelegate>
+@interface UploadController : NSObject
 
-@property (weak, nonatomic) id <UploadControllerDelegate> delegate;
+@property (weak, nonatomic) UIViewController <UploadControllerDelegate> *delegate;
 
-- (id)initWithDelegate:(id <UploadControllerDelegate>)delegate;
+- (id)initWithDelegate:(UIViewController <UploadControllerDelegate> *)delegate;
 
 - (void)uploadTracksWithRecordings:(NSArray *)recordings SCSetName:(NSString *)name;
 

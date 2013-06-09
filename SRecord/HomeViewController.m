@@ -17,8 +17,6 @@
 @property (strong, nonatomic) NSMutableSet *checkedIndices;
 
 - (void)customInit;
-- (void)checkCell:(UITableViewCell *)cell;
-- (void)uncheckCell:(UITableViewCell *)cell;
 
 @end
 

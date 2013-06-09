@@ -321,18 +321,18 @@
                         <outlet property="totalNoLabel" destination="XBZ-OR-YG8" id="O8f-4e-cTA"/>
                         <segue destination="ZMm-Es-3Hv" kind="unwind" identifier="DoneSession" unwindAction="done:" id="jig-Gq-hXV"/>
                         <segue destination="ZMm-Es-3Hv" kind="unwind" identifier="CancelSession" unwindAction="cancel:" id="Mu7-u2-uNv"/>
-                        <segue destination="ymU-6H-R3s" kind="modal" identifier="UploadSegue" customClass="LeftToRightSegue" id="QDD-v4-oYc"/>
+                        <segue destination="Fg7-ka-tPz" kind="modal" identifier="UploadSegue" id="dgE-ss-Bmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5m-3n-FTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZMm-Es-3Hv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-598" y="138"/>
+            <point key="canvasLocation" x="-598" y="131"/>
         </scene>
-        <!--Upload View Controller-->
+        <!--Old Upload View Controller-->
         <scene sceneID="g9v-eE-CSp">
             <objects>
-                <viewController id="ymU-6H-R3s" customClass="UploadViewController" sceneMemberID="viewController">
+                <viewController id="ymU-6H-R3s" customClass="OldUploadViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0aT-g6-r8W">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -384,7 +384,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MP2-O3-oLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0i4-p8-ANg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="304" y="138"/>
+            <point key="canvasLocation" x="368" y="-1398"/>
         </scene>
         <!--Set Creation View Controller-->
         <scene sceneID="qEp-fC-8zY">
@@ -447,7 +447,7 @@ If you want to give it a custom name instead, type it below.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXJ-7G-uKB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uPC-xT-VBC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="138"/>
+            <point key="canvasLocation" x="1466" y="-1390"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gcp-Ys-WIb">
@@ -502,6 +502,81 @@ If you want to give it a custom name instead, type it below.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZZ-9n-7Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2544" y="-1041"/>
+        </scene>
+        <!--Upload View Controller-->
+        <scene sceneID="YRp-h0-iaQ">
+            <objects>
+                <viewController id="Fg7-ka-tPz" customClass="UploadViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uBG-MP-32K">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="We will now upload the recordings to SoundCloud." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y9J-wa-IKm">
+                                <rect key="frame" x="20" y="250" width="728" height="150"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="52"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xys-lc-j8f">
+                                <rect key="frame" x="79" y="800" width="250" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <state key="normal" title="Don't upload" backgroundImage="ADADAD.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="H4d-02-JY7" kind="unwind" identifier="CancelUploadSegue" unwindAction="cancel:" id="Ytd-Ru-O7r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fqx-e9-4kJ">
+                                <rect key="frame" x="440" y="800" width="250" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <state key="normal" title="OK" backgroundImage="0066FF.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okButtonTapped" destination="Fg7-ka-tPz" eventType="touchUpInside" id="Z4z-eK-tmo"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jun 4, 2013, 9:30 PM" borderStyle="bezel" placeholder="Name the set" textAlignment="center" minimumFontSize="17" id="ToS-1I-kSa">
+                                <rect key="frame" x="312" y="516" width="380" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Fg7-ka-tPz" id="nRk-gN-fnc"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name of the Set" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hp1-Ac-y76">
+                                <rect key="frame" x="76" y="516" width="220" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="SCSetNameInput" destination="ToS-1I-kSa" id="h8b-Vz-ZDD"/>
+                        <segue destination="H4d-02-JY7" kind="unwind" identifier="DoneUploadSegue" unwindAction="done:" id="0g9-V3-80S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mky-8f-4ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="H4d-02-JY7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="408" y="131"/>
         </scene>
     </scenes>
     <resources>

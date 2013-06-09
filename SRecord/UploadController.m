@@ -7,12 +7,13 @@
 //
 
 #import "UploadController.h"
+#import "SCConnectionManager.h"
 #import "RecordingHandler.h"
 #import "ErrorHelper.h"
 #import <SCAPI.h>
 #import <SVProgressHUD.h>
 
-@interface UploadController ()
+@interface UploadController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *tracksUploaded;
 @property (strong, nonatomic) NSMutableArray *uploadsRemaining;
@@ -50,7 +51,7 @@
     self.uploadsRemaining = [[NSMutableArray alloc] init];
 }
 
-- (id)initWithDelegate:(id<UploadControllerDelegate>)delegate {
+- (id)initWithDelegate:(UIViewController<UploadControllerDelegate> *)delegate {
     self = [self init];
     self.delegate = delegate;
     return self;
@@ -67,8 +68,30 @@
 - (void)uploadTracksWithRecordings:(NSArray *)recordings SCSetName:(NSString *)name {
     // init the recordings to upload
     [self.uploadsRemaining setArray:recordings];
+    self.SCSetName = name;
     // reset instance variables for the new uploading process
     [self resetUploadVariables];
+    // login to soundcloud if necessary
+    if (![SCConnectionManager isLoggedIn]) {
+        // if login was successful, perform uploading
+        void (^successHandler)();
+        successHandler = ^() {
+            [self uploadRemaining];
+        };
+        // if login was canceled, cancel uploading
+        void (^cancelHandler)();
+        cancelHandler = ^() {
+            [SVProgressHUD showErrorWithStatus:@"Canceled"];
+            [self.delegate didCancelUploading];
+        };
+        // present login view
+        [SCConnectionManager presentLoginViewControllerWithPresenter:self.delegate
+                                                         doOnSuccess:successHandler
+                                                          doOnCancel:cancelHandler];
+    } else {
+        // if already logged in, perform uploading directly
+        [self uploadRemaining];
+    }
 }
 
 - (void)uploadRemaining {

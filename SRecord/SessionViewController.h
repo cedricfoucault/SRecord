@@ -10,7 +10,7 @@
 #import <AVFoundation/AVAudioRecorder.h>
 @class RecordingHandler;
 
-@interface SessionViewController : UIViewController <AVAudioRecorderDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
+@interface SessionViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *currentNoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalNoLabel;

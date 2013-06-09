@@ -22,6 +22,7 @@
 		82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */; };
 		821454101763FD52003BF650 /* UITableViewCell+Checkable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214540F1763FD52003BF650 /* UITableViewCell+Checkable.m */; };
 		8214541317641DD4003BF650 /* UploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214541217641DD4003BF650 /* UploadController.m */; };
+		8214541617643D9D003BF650 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214541517643D9D003BF650 /* UploadViewController.m */; };
 		8218364F1760527200592D9F /* ErrorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218364E1760527200592D9F /* ErrorHelper.m */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
 		8255AC22175EF1C600C8D022 /* FF0000.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC21175EF1C600C8D022 /* FF0000.png */; };
@@ -36,7 +37,7 @@
 		8255AC37175FA4E700C8D022 /* 000000.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC36175FA4E700C8D022 /* 000000.png */; };
 		8255AC39175FA4F400C8D022 /* 666666.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC38175FA4F400C8D022 /* 666666.png */; };
 		8255AC3B175FA53F00C8D022 /* 333333.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC3A175FA53F00C8D022 /* 333333.png */; };
-		8255AC3E175FA6DD00C8D022 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8255AC3D175FA6DD00C8D022 /* UploadViewController.m */; };
+		8255AC3E175FA6DD00C8D022 /* OldUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8255AC3D175FA6DD00C8D022 /* OldUploadViewController.m */; };
 		8255AC41175FDF4A00C8D022 /* SetCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */; };
 		82AA17D2175818C80067FD43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D1175818C80067FD43 /* QuartzCore.framework */; };
 		82AA17D5175818D20067FD43 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AA17D3175818D20067FD43 /* AddressBook.framework */; };
@@ -89,6 +90,8 @@
 		8214540F1763FD52003BF650 /* UITableViewCell+Checkable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Checkable.m"; sourceTree = "<group>"; };
 		8214541117641DD4003BF650 /* UploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadController.h; sourceTree = "<group>"; };
 		8214541217641DD4003BF650 /* UploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadController.m; sourceTree = "<group>"; };
+		8214541417643D9D003BF650 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
+		8214541517643D9D003BF650 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		8218364D1760527200592D9F /* ErrorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHelper.h; sourceTree = "<group>"; };
 		8218364E1760527200592D9F /* ErrorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHelper.m; sourceTree = "<group>"; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
@@ -106,8 +109,8 @@
 		8255AC36175FA4E700C8D022 /* 000000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000000.png; sourceTree = "<group>"; };
 		8255AC38175FA4F400C8D022 /* 666666.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 666666.png; sourceTree = "<group>"; };
 		8255AC3A175FA53F00C8D022 /* 333333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333333.png; sourceTree = "<group>"; };
-		8255AC3C175FA6DC00C8D022 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
-		8255AC3D175FA6DD00C8D022 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
+		8255AC3C175FA6DC00C8D022 /* OldUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldUploadViewController.h; sourceTree = "<group>"; };
+		8255AC3D175FA6DD00C8D022 /* OldUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldUploadViewController.m; sourceTree = "<group>"; };
 		8255AC3F175FDF4A00C8D022 /* SetCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCreationViewController.h; sourceTree = "<group>"; };
 		8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCreationViewController.m; sourceTree = "<group>"; };
 		82AA17C71758174E0067FD43 /* libSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoundCloudAPI.a; path = "CocoaSoundCloudAPI/build/Release-iphoneos/libSoundCloudAPI.a"; sourceTree = "<group>"; };
@@ -209,6 +212,17 @@
 			path = SRecord/assets;
 			sourceTree = "<group>";
 		};
+		8214541817644E08003BF650 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				8255AC3C175FA6DC00C8D022 /* OldUploadViewController.h */,
+				8255AC3D175FA6DD00C8D022 /* OldUploadViewController.m */,
+				8255AC3F175FDF4A00C8D022 /* SetCreationViewController.h */,
+				8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
 		82AA17DD1758195D0067FD43 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,10 +290,8 @@
 				82F3F349175308E600586EA3 /* EditSentencesViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
 				82556A8517546E2100DBACC1 /* SessionViewController.m */,
-				8255AC3C175FA6DC00C8D022 /* UploadViewController.h */,
-				8255AC3D175FA6DD00C8D022 /* UploadViewController.m */,
-				8255AC3F175FDF4A00C8D022 /* SetCreationViewController.h */,
-				8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */,
+				8214541417643D9D003BF650 /* UploadViewController.h */,
+				8214541517643D9D003BF650 /* UploadViewController.m */,
 				8214541117641DD4003BF650 /* UploadController.h */,
 				8214541217641DD4003BF650 /* UploadController.m */,
 				82E8986317566896002F5637 /* RecordingHandler.h */,
@@ -302,6 +314,7 @@
 				82AA17DF175821BB0067FD43 /* SRConstants.m */,
 				82AA17E117582C930067FD43 /* SoundCloud.bundle */,
 				82F3F3291753036900586EA3 /* Supporting Files */,
+				8214541817644E08003BF650 /* Deprecated */,
 			);
 			path = SRecord;
 			sourceTree = "<group>";
@@ -455,11 +468,12 @@
 				82139B2F175BE50C00A9CB22 /* SCConnectionManager.m in Sources */,
 				82AB42F8175DBF500072B264 /* SRAlertViewDelegate.m in Sources */,
 				8255AC33175F28E200C8D022 /* LeftToRightSegue.m in Sources */,
-				8255AC3E175FA6DD00C8D022 /* UploadViewController.m in Sources */,
+				8255AC3E175FA6DD00C8D022 /* OldUploadViewController.m in Sources */,
 				8255AC41175FDF4A00C8D022 /* SetCreationViewController.m in Sources */,
 				8218364F1760527200592D9F /* ErrorHelper.m in Sources */,
 				821454101763FD52003BF650 /* UITableViewCell+Checkable.m in Sources */,
 				8214541317641DD4003BF650 /* UploadController.m in Sources */,
+				8214541617643D9D003BF650 /* UploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

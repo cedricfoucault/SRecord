@@ -2,16 +2,16 @@
 //  UploadViewController.h
 //  SRecord
 //
-//  Created by Cédric Foucault on 6/5/13.
+//  Created by Cédric Foucault on 6/8/13.
 //  Copyright (c) 2013 Cédric Foucault. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+@protocol UploadControllerDelegate;
 
-@interface UploadViewController : UIViewController <UIAlertViewDelegate>
+@interface UploadViewController : UIViewController
 
-@property (copy, nonatomic) NSDate *sessionDate;
 @property (strong, nonatomic) NSArray *recordings;
-- (IBAction)okButtonTapped:(id)sender;
+@property (copy, nonatomic) NSString *defaultSCSetName;
 
 @end

@@ -19,7 +19,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UploadViewController.h"
 
-@interface SessionViewController ()
+@interface SessionViewController () <AVAudioRecorderDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (copy, nonatomic) NSDate *sessionDate;
 @property (nonatomic) NSUInteger currentNo;
@@ -123,9 +123,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"UploadSegue"]) {
-        UploadViewController *uploadController = [segue destinationViewController];
-        uploadController.recordings = [NSArray arrayWithArray:self.recordingsDone];
-        uploadController.sessionDate = self.sessionDate;
+        // build default set title from session date
+        static NSDateFormatter *dateFormatter = nil;
+        if (dateFormatter == nil) {
+            dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        }
+        UploadViewController *uploadViewController = [segue destinationViewController];
+        uploadViewController.recordings = [NSArray arrayWithArray:self.recordingsDone];
+        uploadViewController.defaultSCSetName = [dateFormatter stringFromDate:self.sessionDate];
     }
 }
 
@@ -172,11 +179,6 @@
                 [self.recButton setTitleColor:recordTitleColor forState:UIControlStateNormal];
                 [self.recButton setTitleColor:recordTitleColor forState:UIControlStateHighlighted];
             }
-//            [self stopRecording];
-//            [self commitRecording];
-//            [self nextState];
-//            [sender setTitle:@"Record" forState:UIControlStateNormal];
-//            [sender setTitle:@"Record" forState:UIControlStateHighlighted];
         } else {
             // start recording
             [self startRecording];
@@ -186,8 +188,6 @@
             [self.recButton setTitle:@"Pause" forState:UIControlStateHighlighted];
             [self.recButton setTitleColor:pauseTitleColor forState:UIControlStateNormal];
             [self.recButton setTitleColor:pauseTitleColor forState:UIControlStateHighlighted];
-//            [sender setTitle:@"Stop" forState:UIControlStateNormal];
-//            [sender setTitle:@"Stop" forState:UIControlStateHighlighted];
         }
     } else if (sender == self.stopButton) {
         if (self.isRecording) {
@@ -198,8 +198,6 @@
             [self.recButton setTitle:@"Record" forState:UIControlStateNormal];
             [self.recButton setTitle:@"Record" forState:UIControlStateHighlighted];
             [self.recButton setTitleColor:recordTitleColor forState:UIControlStateNormal];
-//            [sender setTitle:@"Record" forState:UIControlStateNormal];
-//            [sender setTitle:@"Record" forState:UIControlStateHighlighted];
         }
         
     } else if (sender == self.resetButton) {
