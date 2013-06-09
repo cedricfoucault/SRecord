@@ -10,6 +10,7 @@
 
 @interface UploadViewController : UIViewController <UIAlertViewDelegate>
 
+@property (copy, nonatomic) NSDate *sessionDate;
 @property (strong, nonatomic) NSArray *recordings;
 - (IBAction)okButtonTapped:(id)sender;
 

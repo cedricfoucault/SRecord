@@ -10,6 +10,7 @@
 
 @interface HomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (IBAction)startPressed;
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;
 

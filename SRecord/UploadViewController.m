@@ -82,6 +82,7 @@
         // if login was canceled, cancel uploading
         void (^cancelHandler)();
         cancelHandler = ^() {
+            [SVProgressHUD showErrorWithStatus:@"Canceled"];
             [self cancel];
         };
         // present login view
@@ -127,13 +128,22 @@
     // set request parameters for the track to upload
     SCAccount *account = [SCSoundCloud account];
     BOOL private = YES;
-    NSString *trackTitle = [NSString stringWithFormat:@"%@ S%04d", self.currentUpload.transcript, self.currentUpload.sessionNo];
+    static NSDateFormatter *titleDateFormatter = nil;
+    if (titleDateFormatter == nil) {
+        titleDateFormatter = [[NSDateFormatter alloc] init];
+        titleDateFormatter.locale = [NSLocale currentLocale];
+        titleDateFormatter.dateFormat = @"MMM d, h:m a";
+    }
+    NSString *dateString = [titleDateFormatter stringFromDate:self.currentUpload.sessionDate];
+    NSString *trackTitle = [NSString stringWithFormat:@"%@ - %@", dateString, self.currentUpload.transcript];
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 self.currentUpload.fileURL, @"track[asset_data]",
                                 trackTitle, @"track[title]",
+                                @"true", @"track[downloadable]",
+                                @"wav", @"track[original_format]",
                                 (private) ? @"private" : @"public", @"track[sharing]", //a BOOL
                                 @"recording", @"track[type]",
-                                @"description", @"A sample recorded from session ",
+                                @"description", self.currentUpload.transcript,
                                 nil];
     // init response handler
     void (^responseHandler)(NSURLResponse *, NSData *, NSError *);
@@ -222,6 +232,7 @@
     // handle alert displayed when an upload failed 
     if (buttonIndex == [alertView cancelButtonIndex]) {
         // cancel
+        [SVProgressHUD showErrorWithStatus:@"Canceled"];
         [self cancel];
     } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Skip this one"]) {
         // continue uploading skipping the current one
@@ -248,7 +259,7 @@
         // send the controller the tracks ID and default set title
         SetCreationViewController *setCreationController = [segue destinationViewController];
         setCreationController.tracksID = [NSArray arrayWithArray:self.tracksUploaded];
-        setCreationController.defaultSetTitle = [dateFormatter stringFromDate:[NSDate date]];
+        setCreationController.defaultSetTitle = [dateFormatter stringFromDate:self.sessionDate];
     }
 }
 

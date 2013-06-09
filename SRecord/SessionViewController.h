@@ -12,13 +12,17 @@
 
 @interface SessionViewController : UIViewController <AVAudioRecorderDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *currentNoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalNoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sentenceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *quitButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *recButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 - (void)startNewSessionWithSentences:(NSArray *)sentences;
-- (IBAction)handleTouchUpInside:(UIButton *)recButton;
-- (IBAction)handleTouchDown:(UIButton *)recButton;
+- (IBAction)handleTouchUpInside:(UIButton *)sender;
+- (IBAction)handleTouchDown:(UIButton *)sender;
 - (IBAction)handleTouchUpOutside:(UIButton *)recButton;
 - (IBAction)quitTapped:(UIButton *)sender;
 

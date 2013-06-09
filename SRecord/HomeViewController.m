@@ -9,9 +9,16 @@
 #import "HomeViewController.h"
 #import "SessionViewController.h"
 #import "SentencesController.h"
+#import <SVProgressHUD.h>
+#import "UITableViewCell+Checkable.h"
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *sentencesTableView;
+@property (strong, nonatomic) NSMutableSet *checkedIndices;
+
+- (void)customInit;
+- (void)checkCell:(UITableViewCell *)cell;
+- (void)uncheckCell:(UITableViewCell *)cell;
 
 @end
 
@@ -22,8 +29,22 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self customInit];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Custom initialization
+        [self customInit];
+    }
+    return self;
+}
+
+- (void)customInit {
+    self.checkedIndices = [[NSCountedSet alloc] init];
 }
 
 - (void)viewDidLoad
@@ -61,6 +82,15 @@
     if (![cell.textLabel.text isEqualToString:sentence]) {
         cell.textLabel.text = sentence;
     }
+    
+    [cell setChecked:NO];
+    for (NSIndexPath *checkedIndexPath in self.checkedIndices) {
+        if ([indexPath compare:checkedIndexPath] == NSOrderedSame) {
+            [cell setChecked:YES];
+            break;
+        }
+    }
+    
     return cell;
 }
 
@@ -72,11 +102,42 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // deselect cell
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:NO];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isChecked]) {
+        [cell setChecked:NO];
+        // Reflect uncheck in data model
+        [self.checkedIndices removeObject:indexPath];
+    } else {
+        [cell setChecked:YES];
+        // Reflect uncheck in data model
+        [self.checkedIndices addObject:indexPath];
+    }
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"StartSession"]) {
+    if ([[segue identifier] isEqualToString:@"StartSessionSegue"]) {
         SessionViewController *sessionController = [segue destinationViewController];
-        [sessionController startNewSessionWithSentences:[SentencesController loadSentences]];
+        // retrieve the sentences that were checked by the user
+        NSMutableArray *checkedSentences = [[NSMutableArray alloc] init];
+        NSArray *sentences = [SentencesController loadSentences];
+        NSArray *sortDescrs = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"row" ascending:YES]];
+        for (NSIndexPath *checkedIndexPath in [self.checkedIndices sortedArrayUsingDescriptors:sortDescrs]) {
+            [checkedSentences addObject:[sentences objectAtIndex:checkedIndexPath.row]];
+        }
+        // init a new session
+        [sessionController startNewSessionWithSentences:checkedSentences];
+    }
+}
+
+- (IBAction)startPressed {
+    if ([self.checkedIndices count] > 0) {
+        [self performSegueWithIdentifier:@"StartSessionSegue" sender:self];
+    } else {
+        [SVProgressHUD showErrorWithStatus:@"No sentence selected"];
     }
 }
 
