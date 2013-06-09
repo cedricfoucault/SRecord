@@ -8,7 +8,11 @@
 
 #import "RecordingHandler.h"
 
+static NSDateFormatter *titleDateFormatter = nil;
+
 @implementation RecordingHandler
+
+@synthesize trackTitle = _trackTitle;
 
 - (id)initWithFileURL:(NSURL *)URL {
     self = [self init];
@@ -22,16 +26,25 @@
     return self;
 }
 
-//- (id)initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript sessionNo:(NSInteger)sessionNo {
-//    self = [self initWithFileURL:URL transcript:transcript];
-//    self.sessionNo = sessionNo;
-//    return self;
-//}
-
 - (id)initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript sessionDate:(NSDate *)date {
     self = [self initWithFileURL:URL transcript:transcript];
     self.sessionDate = date;
     return self;
+}
+
+- (NSString *)trackTitle {
+    // lazy init
+    if (!_trackTitle) {
+        if (titleDateFormatter == nil) {
+            titleDateFormatter = [[NSDateFormatter alloc] init];
+            titleDateFormatter.locale = [NSLocale currentLocale];
+            titleDateFormatter.dateFormat = @"MMM d, h:m a";
+        }
+        NSString *dateString = [titleDateFormatter stringFromDate:self.sessionDate];
+        _trackTitle = [NSString stringWithFormat:@"%@ - %@", dateString, self.transcript];
+    }
+    
+    return _trackTitle;
 }
 
 @end

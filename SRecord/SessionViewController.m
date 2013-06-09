@@ -33,8 +33,8 @@
 @property (strong, nonatomic) RecordingHandler *currentRecording;
 
 - (void)customInit;
-- (void)initNewSessionVariables;
-- (void)initViews;
+- (void)resetSessionVariables;
+- (void)resetViews;
 - (void)removeOldRecordings;
 - (void)nextState;
 - (void)endSession;
@@ -82,11 +82,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self initViews];
+    [self resetViews];
     [self nextState];
 }
 
-- (void)initViews {
+- (void)resetViews {
     // init views
     self.totalNoLabel.text = [NSString stringWithFormat:@"%d", self.totalNo];
     self.currentNoLabel.text = [NSString stringWithFormat:@"%d", self.currentNo];
@@ -133,12 +133,12 @@
     // set the sentences for this session
     [self.sentencesRemaining setArray:sentences];
     // init instance variables
-    [self initNewSessionVariables];
+    [self resetSessionVariables];
     // remove old recording files from temporary storage
     [self removeOldRecordings];
 }
 
-- (void)initNewSessionVariables {
+- (void)resetSessionVariables {
     // init instance variables for the new session
     [self.recordingsDone removeAllObjects];
     self.totalNo = [self.sentencesRemaining count];

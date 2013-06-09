@@ -21,6 +21,7 @@
 		82139B3D175C3FB200A9CB22 /* Record-Normal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3A175C3FB200A9CB22 /* Record-Normal-icon.png */; };
 		82139B3E175C3FB200A9CB22 /* Record-Pressed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */; };
 		821454101763FD52003BF650 /* UITableViewCell+Checkable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214540F1763FD52003BF650 /* UITableViewCell+Checkable.m */; };
+		8214541317641DD4003BF650 /* UploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214541217641DD4003BF650 /* UploadController.m */; };
 		8218364F1760527200592D9F /* ErrorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218364E1760527200592D9F /* ErrorHelper.m */; };
 		82556A8617546E2100DBACC1 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82556A8517546E2100DBACC1 /* SessionViewController.m */; };
 		8255AC22175EF1C600C8D022 /* FF0000.png in Resources */ = {isa = PBXBuildFile; fileRef = 8255AC21175EF1C600C8D022 /* FF0000.png */; };
@@ -86,6 +87,8 @@
 		82139B3B175C3FB200A9CB22 /* Record-Pressed-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Record-Pressed-icon.png"; sourceTree = "<group>"; };
 		8214540E1763FD52003BF650 /* UITableViewCell+Checkable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Checkable.h"; sourceTree = "<group>"; };
 		8214540F1763FD52003BF650 /* UITableViewCell+Checkable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Checkable.m"; sourceTree = "<group>"; };
+		8214541117641DD4003BF650 /* UploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadController.h; sourceTree = "<group>"; };
+		8214541217641DD4003BF650 /* UploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadController.m; sourceTree = "<group>"; };
 		8218364D1760527200592D9F /* ErrorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHelper.h; sourceTree = "<group>"; };
 		8218364E1760527200592D9F /* ErrorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHelper.m; sourceTree = "<group>"; };
 		82556A8417546E2100DBACC1 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
@@ -269,18 +272,20 @@
 				8200F454175BCE7F008CD99D /* MenuViewController.m */,
 				82F3F3451753086100586EA3 /* HomeViewController.h */,
 				82F3F3461753086100586EA3 /* HomeViewController.m */,
+				82F3F348175308E600586EA3 /* EditSentencesViewController.h */,
+				82F3F349175308E600586EA3 /* EditSentencesViewController.m */,
 				82556A8417546E2100DBACC1 /* SessionViewController.h */,
 				82556A8517546E2100DBACC1 /* SessionViewController.m */,
 				8255AC3C175FA6DC00C8D022 /* UploadViewController.h */,
 				8255AC3D175FA6DD00C8D022 /* UploadViewController.m */,
 				8255AC3F175FDF4A00C8D022 /* SetCreationViewController.h */,
 				8255AC40175FDF4A00C8D022 /* SetCreationViewController.m */,
-				82AB42F6175DBF500072B264 /* SRAlertViewDelegate.h */,
-				82AB42F7175DBF500072B264 /* SRAlertViewDelegate.m */,
+				8214541117641DD4003BF650 /* UploadController.h */,
+				8214541217641DD4003BF650 /* UploadController.m */,
 				82E8986317566896002F5637 /* RecordingHandler.h */,
 				82E8986417566896002F5637 /* RecordingHandler.m */,
-				82F3F348175308E600586EA3 /* EditSentencesViewController.h */,
-				82F3F349175308E600586EA3 /* EditSentencesViewController.m */,
+				82AB42F6175DBF500072B264 /* SRAlertViewDelegate.h */,
+				82AB42F7175DBF500072B264 /* SRAlertViewDelegate.m */,
 				82F3F34B175318FA00586EA3 /* SentenceCell.h */,
 				82F3F34C175318FB00586EA3 /* SentenceCell.m */,
 				8200F456175BD702008CD99D /* SentencesController.h */,
@@ -454,6 +459,7 @@
 				8255AC41175FDF4A00C8D022 /* SetCreationViewController.m in Sources */,
 				8218364F1760527200592D9F /* ErrorHelper.m in Sources */,
 				821454101763FD52003BF650 /* UITableViewCell+Checkable.m in Sources */,
+				8214541317641DD4003BF650 /* UploadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

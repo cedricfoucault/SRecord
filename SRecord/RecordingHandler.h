@@ -13,11 +13,10 @@
 @property (copy, nonatomic) NSURL *fileURL;
 @property (copy, nonatomic) NSString *transcript;
 @property (copy, nonatomic) NSDate *sessionDate;
-//@property (nonatomic) NSInteger sessionNo;
+@property (readonly, nonatomic) NSString *trackTitle;
 
 - (id) initWithFileURL:(NSURL *)URL;
 - (id) initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript;
-//- (id) initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript sessionNo:(NSInteger) sessionNo;
 - (id) initWithFileURL:(NSURL *)URL transcript:(NSString *)transcript sessionDate:(NSDate *) date;
 
 

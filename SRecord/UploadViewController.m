@@ -16,7 +16,7 @@
 
 @interface UploadViewController ()
 
-@property (strong, nonatomic) NSMutableArray *remainingUploads;
+@property (strong, nonatomic) NSMutableArray *uploadsRemaining;
 @property (strong, nonatomic) RecordingHandler *currentUpload;
 @property (strong, nonatomic) NSMutableArray *tracksUploaded;
 @property (nonatomic) NSUInteger uploadCount;
@@ -55,7 +55,7 @@
 
 - (void)customInit {
     self.tracksUploaded = [[NSMutableArray alloc] init];
-    self.remainingUploads = [[NSMutableArray alloc] init];
+    self.uploadsRemaining = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidLoad
@@ -98,14 +98,14 @@
     // reset the tracksUploaded array
     [self.tracksUploaded removeAllObjects];
     // init the recordings to upload
-    [self.remainingUploads setArray:self.recordings];
+    [self.uploadsRemaining setArray:self.recordings];
     // upload recording by recording
     self.uploadCount = 0;
-    self.uploadTotal = [self.remainingUploads count];
+    self.uploadTotal = [self.uploadsRemaining count];
 }
 
 - (void)uploadRemaining {
-    if ([self.remainingUploads count] != 0) {
+    if ([self.uploadsRemaining count] != 0) {
         // pop next remaining upload
         self.currentUpload = [self popUpload];
         // increase counter
@@ -222,9 +222,9 @@
 
 - (RecordingHandler *)popUpload {
     // get next upload
-    RecordingHandler *upload = [self.remainingUploads objectAtIndex:0];
+    RecordingHandler *upload = [self.uploadsRemaining objectAtIndex:0];
     // remove it from the list
-    [self.remainingUploads removeObjectAtIndex:0];
+    [self.uploadsRemaining removeObjectAtIndex:0];
     return upload;
 }
 
