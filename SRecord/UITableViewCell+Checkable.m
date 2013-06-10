@@ -15,12 +15,24 @@
 }
 
 - (void)setChecked:(BOOL)checked {
+    static UIColor *uncheckedTextColor = nil;
+    static UIColor *checkedTextColor = nil;
+    if (uncheckedTextColor == nil) {
+        uncheckedTextColor = [UIColor darkGrayColor];
+//        uncheckedTextColor = [UIColor blackColor];
+    }
+    if (checkedTextColor == nil) {
+        checkedTextColor = [UIColor blackColor];
+//        checkedTextColor = [UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0];
+    }
     if (checked) {
         self.accessoryType = UITableViewCellAccessoryCheckmark;
-        self.textLabel.textColor = [UIColor blackColor];
+        self.textLabel.textColor = checkedTextColor;
+//        self.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
     } else {
         self.accessoryType = UITableViewCellAccessoryNone;
-        self.textLabel.textColor = [UIColor darkGrayColor];
+        self.textLabel.textColor = uncheckedTextColor;
+//        self.textLabel.font = [UIFont systemFontOfSize:17.0];
     }
 }
 

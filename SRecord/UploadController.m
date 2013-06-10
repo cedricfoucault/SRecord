@@ -9,8 +9,11 @@
 #import "UploadController.h"
 #import "SCConnectionManager.h"
 #import "RecordingHandler.h"
+#import "SessionHandler.h"
 #import "ErrorHelper.h"
 #import <SCAPI.h>
+#import <SCAccount.h>
+#import <NXOAuth2Constants.h>
 #import <SVProgressHUD.h>
 
 @interface UploadController () <UIAlertViewDelegate>
@@ -24,6 +27,17 @@
 @property (strong, nonatomic) void (^progressHandler)(unsigned long long bytesSent, unsigned long long bytesTotal);
 @property (strong, nonatomic) void (^responseHandler)(NSURLResponse *response, NSData *responseData, NSError *error);
 
+- (void)uploadTrackWithRecording:(RecordingHandler *)rec
+                 progressHandler:(void (^)(unsigned long long bytesSend, unsigned long long bytesTotal))progressHandler
+                 responseHandler:(void (^)(NSURLResponse *response, NSData *responseData, NSError *error))responseHandler;;
+
+- (void)createSCSetWithName:(NSString *)name tracks:(NSArray *)tracksID
+            progressHandler:(void (^)(unsigned long long bytesSend, unsigned long long bytesTotal))progressHandler
+            responseHandler:(void (^)(NSURLResponse *response, NSData *responseData, NSError *error))responseHandler;
+
+- (NSDictionary *)parseResponseData:(NSData *)data;
+
+
 - (void)customInit;
 - (void)resetUploadVariables;
 - (void)uploadRemaining;
@@ -32,6 +46,8 @@
 - (void)commitTrack:(NSString *)trackID;
 - (void)setHandlersForCurrentUpload;
 - (void)setHandlersForSetCreation;
+
+- (void)didFailToGetAccessToken:(NSNotification *)aNotification;
 
 @end
 
@@ -49,6 +65,10 @@
 - (void)customInit {
     self.tracksUploaded = [[NSMutableArray alloc] init];
     self.uploadsRemaining = [[NSMutableArray alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didFailToGetAccessToken:)
+                                                 name:SCAccountDidFailToGetAccessToken
+                                               object:nil];
 }
 
 - (id)initWithDelegate:(UIViewController<UploadControllerDelegate> *)delegate {
@@ -63,6 +83,10 @@
     // upload recording by recording
     self.currentNo = 0;
     self.totalNo = [self.uploadsRemaining count];
+}
+
+- (void)uploadSession:(SessionHandler *)session {
+    [self uploadTracksWithRecordings:session.recordings SCSetName:session.SCSetName];
 }
 
 - (void)uploadTracksWithRecordings:(NSArray *)recordings SCSetName:(NSString *)name {
@@ -349,6 +373,28 @@
     if (trackID) {
         [self.tracksUploaded addObject:trackID];
     }
+}
+
+- (void)didFailToGetAccessToken:(NSNotification *)aNotification {
+    NSError *error = [[aNotification userInfo] objectForKey:NXOAuth2AccountStoreErrorKey];
+    NSLog(@"Getting access token did fail with error: %@", [error localizedDescription]);
+    // refresh token by logging in again
+    [SVProgressHUD dismiss];
+    // if login was successful, resume uploading
+    void (^successHandler)();
+    successHandler = ^() {
+        [self uploadCurrentAndRemaining];
+    };
+    // if login was canceled, cancel uploading
+    void (^cancelHandler)();
+    cancelHandler = ^() {
+        [SVProgressHUD showErrorWithStatus:@"Canceled"];
+        [self.delegate didCancelUploading];
+    };
+    // present login view
+    [SCConnectionManager presentLoginViewControllerWithPresenter:self.delegate
+                                                     doOnSuccess:successHandler
+                                                      doOnCancel:cancelHandler];
 }
 
 @end

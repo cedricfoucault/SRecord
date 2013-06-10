@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SentenceCell.h"
-@class SentencesController;
+@class SentencesManager;
 
 @interface EditSentencesViewController : UITableViewController <SentenceCellDelegate>
 

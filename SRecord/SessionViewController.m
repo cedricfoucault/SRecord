@@ -18,6 +18,7 @@
 #import "SCConnectionManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UploadViewController.h"
+#import "SessionRecordingsManager.h"
 
 @interface SessionViewController () <AVAudioRecorderDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
@@ -130,9 +131,12 @@
             [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
             [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
         }
+        NSString *defaultSCSetName = [dateFormatter stringFromDate:self.sessionDate];
         UploadViewController *uploadViewController = [segue destinationViewController];
+        uploadViewController.sessionDate = self.sessionDate;
         uploadViewController.recordings = [NSArray arrayWithArray:self.recordingsDone];
-        uploadViewController.defaultSCSetName = [dateFormatter stringFromDate:self.sessionDate];
+        uploadViewController.defaultSCSetName = defaultSCSetName;
+        
     }
 }
 
@@ -164,8 +168,8 @@
                 [self resumeRecording];
                 // change button to pause
                 UIColor *pauseTitleColor = [UIColor orangeColor];
-                [self.recButton setTitle:@"Pause" forState:UIControlStateNormal];
-                [self.recButton setTitle:@"Pause" forState:UIControlStateHighlighted];
+                [self.recButton setTitle:@"\u2016 PAUSE" forState:UIControlStateNormal];
+                [self.recButton setTitle:@"\u2016 PAUSE" forState:UIControlStateHighlighted];
                 [self.recButton setTitleColor:pauseTitleColor forState:UIControlStateNormal];
                 [self.recButton setTitleColor:pauseTitleColor forState:UIControlStateHighlighted];
                 
@@ -174,8 +178,8 @@
                 [self pauseRecording];
                 // change button to resume
                 UIColor *recordTitleColor = [UIColor redColor];
-                [self.recButton setTitle:@"Resume" forState:UIControlStateNormal];
-                [self.recButton setTitle:@"Resume" forState:UIControlStateHighlighted];
+                [self.recButton setTitle:@"\u25cf RESUME" forState:UIControlStateNormal];
+                [self.recButton setTitle:@"\u25cf RESUME" forState:UIControlStateHighlighted];
                 [self.recButton setTitleColor:recordTitleColor forState:UIControlStateNormal];
                 [self.recButton setTitleColor:recordTitleColor forState:UIControlStateHighlighted];
             }
@@ -184,8 +188,8 @@
             [self startRecording];
             // change button to pause
             UIColor *pauseTitleColor = [UIColor orangeColor];
-            [self.recButton setTitle:@"Pause" forState:UIControlStateNormal];
-            [self.recButton setTitle:@"Pause" forState:UIControlStateHighlighted];
+            [self.recButton setTitle:@"\u2016 PAUSE" forState:UIControlStateNormal];
+            [self.recButton setTitle:@"\u2016 PAUSE" forState:UIControlStateHighlighted];
             [self.recButton setTitleColor:pauseTitleColor forState:UIControlStateNormal];
             [self.recButton setTitleColor:pauseTitleColor forState:UIControlStateHighlighted];
         }
@@ -195,8 +199,8 @@
             [self commitRecording];
             [self nextState];
             UIColor *recordTitleColor = [UIColor redColor];
-            [self.recButton setTitle:@"Record" forState:UIControlStateNormal];
-            [self.recButton setTitle:@"Record" forState:UIControlStateHighlighted];
+            [self.recButton setTitle:@"\u25cf REC" forState:UIControlStateNormal];
+            [self.recButton setTitle:@"\u25cf REC" forState:UIControlStateHighlighted];
             [self.recButton setTitleColor:recordTitleColor forState:UIControlStateNormal];
         }
         
@@ -204,8 +208,8 @@
         if (self.isRecording) {
             [self resetRecording];
             UIColor *recordTitleColor = [UIColor redColor];
-            [self.recButton setTitle:@"Record" forState:UIControlStateNormal];
-            [self.recButton setTitle:@"Record" forState:UIControlStateHighlighted];
+            [self.recButton setTitle:@"\u25cf REC" forState:UIControlStateNormal];
+            [self.recButton setTitle:@"\u25cf REC" forState:UIControlStateHighlighted];
             [self.recButton setTitleColor:recordTitleColor forState:UIControlStateNormal];
         }
     }
@@ -233,7 +237,7 @@
 - (IBAction)quitTapped:(UIButton *)sender {
     UIActionSheet *confirmActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
                                                       cancelButtonTitle:@"Cancel"
-                                                 destructiveButtonTitle:@"Abort Session"
+                                                 destructiveButtonTitle:@"Skip to upload"
                                                       otherButtonTitles:nil];
     [confirmActionSheet showFromRect:self.quitButton.frame inView:self.view animated:YES];
 }

@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SessionViewController.h"
-#import "SentencesController.h"
+#import "SentencesManager.h"
 #import <SVProgressHUD.h>
 #import "UITableViewCell+Checkable.h"
 
@@ -67,7 +67,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[SentencesController loadSentences] count];
+    return [[SentencesManager loadSentences] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,7 +76,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DefaultCellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSString *sentence = [[SentencesController loadSentences] objectAtIndex:indexPath.row];
+    NSString *sentence = [[SentencesManager loadSentences] objectAtIndex:indexPath.row];
     if (![cell.textLabel.text isEqualToString:sentence]) {
         cell.textLabel.text = sentence;
     }
@@ -121,7 +121,7 @@
         SessionViewController *sessionController = [segue destinationViewController];
         // retrieve the sentences that were checked by the user
         NSMutableArray *checkedSentences = [[NSMutableArray alloc] init];
-        NSArray *sentences = [SentencesController loadSentences];
+        NSArray *sentences = [SentencesManager loadSentences];
         NSArray *sortDescrs = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"row" ascending:YES]];
         for (NSIndexPath *checkedIndexPath in [self.checkedIndices sortedArrayUsingDescriptors:sortDescrs]) {
             [checkedSentences addObject:[sentences objectAtIndex:checkedIndexPath.row]];

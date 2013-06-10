@@ -16,6 +16,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.bounceOnCenterPanelChange = NO;
+        self.leftGapPercentage = 0.6f;
     }
     return self;
 }
@@ -26,6 +27,7 @@
     self.menuViewController.sidePanelController = self;
     self.homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     self.sentencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditSentencesViewController"];
+    self.pushViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SavedSentencesViewController"];
     [self setLeftPanel:self.menuViewController];
     [self setCenterPanel:self.homeViewController];
 }

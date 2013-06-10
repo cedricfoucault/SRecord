@@ -11,6 +11,7 @@
 
 @interface UploadViewController : UIViewController
 
+@property (copy, nonatomic) NSDate *sessionDate;
 @property (strong, nonatomic) NSArray *recordings;
 @property (copy, nonatomic) NSString *defaultSCSetName;
 

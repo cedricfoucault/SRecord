@@ -32,6 +32,16 @@ static NSDateFormatter *titleDateFormatter = nil;
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [self init];
+    if (self) {
+        self.fileURL = [aDecoder decodeObjectForKey:@"fileURL"];
+        self.transcript = [aDecoder decodeObjectForKey:@"transcript"];
+        self.sessionDate = [aDecoder decodeObjectForKey:@"sessionDate"];
+    }
+    return self;
+}
+
 - (NSString *)trackTitle {
     // lazy init
     if (!_trackTitle) {
@@ -45,6 +55,12 @@ static NSDateFormatter *titleDateFormatter = nil;
     }
     
     return _trackTitle;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.fileURL forKey:@"fileURL"];
+    [aCoder encodeObject:self.transcript forKey:@"transcript"];
+    [aCoder encodeObject:self.sessionDate forKey:@"sessionDate"];
 }
 
 @end

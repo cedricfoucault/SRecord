@@ -8,8 +8,9 @@
 
 #import "UploadViewController.h"
 #import "UploadController.h"
+#import "SessionRecordingsManager.h"
 
-@interface UploadViewController () <UploadControllerDelegate, UITextFieldDelegate>
+@interface UploadViewController () <UploadControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 
 @property (copy, nonatomic) NSString *SCSetName;
 @property (strong, nonatomic) UploadController *uploadController;
@@ -18,6 +19,7 @@
 - (void)customInit;
 - (void)resetViews;
 - (IBAction)okButtonTapped;
+- (IBAction)dontUploadButtonTapped:(UIButton *)sender;
 
 @end
 
@@ -74,7 +76,26 @@
     [self.uploadController uploadTracksWithRecordings:self.recordings SCSetName:self.SCSetName];
 }
 
+- (IBAction)dontUploadButtonTapped:(UIButton *)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Delete recordings"
+                                                    otherButtonTitles:@"Save for later", nil];
+    [actionSheet showFromRect:sender.frame inView:self.view animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([actionSheet destructiveButtonIndex] == buttonIndex) {
+        [self performSegueWithIdentifier:@"CancelUploadSegue" sender:self];
+    } else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Save for later"]) {
+        [SessionRecordingsManager saveSessionWithDate:self.sessionDate recordings:self.recordings SCSetName:self.SCSetName];
+        [self performSegueWithIdentifier:@"CancelUploadSegue" sender:self];
+    }
+}
+
 - (void)didCancelUploading {
+    // save recordings for possible later uploading
+    [SessionRecordingsManager saveSessionWithDate:self.sessionDate recordings:self.recordings SCSetName:self.SCSetName];
     [self performSegueWithIdentifier:@"CancelUploadSegue" sender:self];
 }
 
@@ -84,7 +105,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.SCSetNameInput) {
-        if (self.SCSetNameInput.text) {
+        if ([self.SCSetNameInput.text length] > 0) {
             self.SCSetName = self.SCSetNameInput.text;
         } else {
             self.SCSetName = self.defaultSCSetName;

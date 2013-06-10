@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <JASidePanelController.h>
 @class MenuViewController;
-@class SentencesController;
+@class SentencesManager;
 
 @interface SidePanelController : JASidePanelController
 
 @property (strong, nonatomic) UIViewController *homeViewController;
 @property (strong, nonatomic) MenuViewController *menuViewController;
 @property (strong, nonatomic) UIViewController *sentencesViewController;
+@property (strong, nonatomic) UIViewController *pushViewController;
 
 @end

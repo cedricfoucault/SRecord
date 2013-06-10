@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SentencesController : NSObject
+@interface SentencesManager : NSObject
 
 + (NSArray *)loadSentences;
 + (void)saveSentences:(NSArray *)sentences;

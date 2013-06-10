@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Cédric Foucault. All rights reserved.
 //
 
-#import "SentencesController.h"
+#import "SentencesManager.h"
 
-@interface SentencesController ()
+@interface SentencesManager ()
 
 + (NSString *)sentencesFilePath;
 
 @end
 
-@implementation SentencesController
+@implementation SentencesManager
 
 + (NSString *)sentencesFilePath {
     static NSString *path = nil;

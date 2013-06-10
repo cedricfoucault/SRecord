@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RecordingHandler : NSObject
+@interface RecordingHandler : NSObject <NSCoding>
 
 @property (copy, nonatomic) NSURL *fileURL;
 @property (copy, nonatomic) NSString *transcript;

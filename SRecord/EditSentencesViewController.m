@@ -8,7 +8,7 @@
 
 #import "EditSentencesViewController.h"
 #import "SentenceCell.h"
-#import "SentencesController.h"
+#import "SentencesManager.h"
 
 @interface EditSentencesViewController ()
 
@@ -48,12 +48,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.sentences = [NSMutableArray arrayWithArray:[SentencesController loadSentences]];
+    self.sentences = [NSMutableArray arrayWithArray:[SentencesManager loadSentences]];
     [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [SentencesController saveSentences:self.sentences];
+    [SentencesManager saveSentences:self.sentences];
     [super viewWillDisappear:animated];
 }
 

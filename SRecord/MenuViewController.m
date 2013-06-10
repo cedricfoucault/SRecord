@@ -57,13 +57,17 @@
      */
     static const NSUInteger HOME_ROWINDEX = 0;
     static const NSUInteger SENTENCES_ROWINDEX = 1;
-    static const NSUInteger CONNECTIONSTATUS_ROWINDEX = 2;
+    static const NSUInteger PUSH_ROWINDEX = 2;
+    static const NSUInteger CONNECTIONSTATUS_ROWINDEX = 3;
     switch (indexPath.row) {
         case HOME_ROWINDEX:
             self.sidePanelController.centerPanel = self.sidePanelController.homeViewController;
             break;
         case SENTENCES_ROWINDEX:
             self.sidePanelController.centerPanel = self.sidePanelController.sentencesViewController;
+            break;
+        case PUSH_ROWINDEX:
+            self.sidePanelController.centerPanel = self.sidePanelController.pushViewController;
             break;
         case CONNECTIONSTATUS_ROWINDEX:
             if ([SCConnectionManager isLoggedIn]) {

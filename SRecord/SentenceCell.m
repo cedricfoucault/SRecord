@@ -17,9 +17,15 @@
     // Configure the view for the selected state
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField == self.sentenceInput) {
         [self.delegate sentenceCellContentDidChange:self];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.sentenceInput) {
+//        [self.delegate sentenceCellContentDidChange:self];
         [textField resignFirstResponder];
     }
     return YES;
